@@ -1,4 +1,4 @@
-# STARTER-team03
+# team03-m23-9am-2
 
 Instructions: <https://ucsb-cs156.github.io/m23/lab/team03.html>
 
