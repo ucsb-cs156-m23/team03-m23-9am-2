@@ -6,7 +6,7 @@ const helpRequestsFixtures = {
         "tableOrBreakoutRoom" : "2",
         "requestTime": "2022-01-02T12:00:00",
         "explanation" : "googlelogin",
-        "solved" : "false"
+        "solved" : false
     },
     threeRequests: [
         {
@@ -16,7 +16,7 @@ const helpRequestsFixtures = {
             "tableOrBreakoutRoom" : "1",
             "requestTime": "2020-01-02T12:00:00",
             "explanation" : "frontend",
-            "solved" : "true"
+            "solved" : true
         },
         {
             "id": 2,
@@ -25,7 +25,7 @@ const helpRequestsFixtures = {
             "tableOrBreakoutRoom" : "2",
             "requestTime": "2021-01-02T12:00:00",
             "explanation" : "posgres",
-            "solved" : "false"
+            "solved" : false
         },
         {
             "id": 3,
@@ -34,7 +34,7 @@ const helpRequestsFixtures = {
             "tableOrBreakoutRoom" : "3",
             "requestTime": "2023-01-02T12:00:00",
             "explanation" : "good",
-            "solved" : "true"
+            "solved" : true
         }
     ]
 };
