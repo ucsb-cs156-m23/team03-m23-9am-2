@@ -1,5 +1,5 @@
-const menuItemReviewFixtures = {
-    oneMenuItemReview: {
+const ucsbDatesFixtures = {
+    oneDate: {
         "id": 1,
         "itemId": 456,
         "reviewerEmail": "brett@ucsb.edu",
@@ -7,7 +7,7 @@ const menuItemReviewFixtures = {
         "localDateTime": "2023-07-26T00:00:00",
         "comments": "great food"
       },
-      threeMenuItemReview: [
+    threeDates: [
         {
           "id": 1,
           "itemId": 41,
@@ -36,4 +36,4 @@ const menuItemReviewFixtures = {
 };
 
 
-export { menuItemReviewFixtures };
+export { ucsbDatesFixtures };
