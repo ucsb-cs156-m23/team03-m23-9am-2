@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import { helpRequestsFixtures } from "fixtures/helpRequestFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import HelpRequestForm from "main/components/HelpRequests/HelpRequestForm";
@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => ({
 describe("HelpRequestForm tests", () => {
     const queryClient = new QueryClient();
 
-    const expectedHeaders = ["requesterEmail", "teamId", "tableOrBreakoutRoom", "requestTime", "explanation", "solved"];
+    const expectedHeaders = ["RequesterEmail", "TeamId", "TableOrBreakoutRoom", "RequestTime", "Explanation", "Solved"];
     const testId = "HelpRequestForm";
 
     test("renders correctly with no initialContents", async () => {
@@ -39,7 +39,7 @@ describe("HelpRequestForm tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
-                    <HelpRequestForm initialContents={helpRequestsFixtures.oneRequest} />
+                    <HelpRequestForm initialContents={helpRequestFixtures.oneRequest} />
                 </Router>
             </QueryClientProvider>
         );

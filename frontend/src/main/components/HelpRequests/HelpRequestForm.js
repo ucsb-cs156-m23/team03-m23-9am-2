@@ -39,7 +39,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
             )}
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="requesterEmail">requesterEmail</Form.Label>
+                <Form.Label htmlFor="requesterEmail">RequesterEmail</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-requesterEmail"}
                     id="requesterEmail"
@@ -59,7 +59,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="teamId">teamId</Form.Label>
+                <Form.Label htmlFor="teamId">TeamId</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-teamId"}
                     id="teamId"
@@ -79,7 +79,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="tableOrBreakoutRoom">tableOrBreakoutRoom</Form.Label>
+                <Form.Label htmlFor="tableOrBreakoutRoom">TableOrBreakoutRoom</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-tableOrBreakoutRoom"}
                     id="tableOrBreakoutRoom"
@@ -99,7 +99,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label htmlFor="requestTime">requestTime</Form.Label>
+                <Form.Label htmlFor="requestTime">RequestTime</Form.Label>
                     <Form.Control
                         data-testid={testIdPrefix + "-requestTime"}
                         id="requestTime"
@@ -122,7 +122,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="explanation">explanation</Form.Label>
+                <Form.Label htmlFor="explanation">Explanation</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-explanation"}
                     id="explanation"
@@ -138,7 +138,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
             </Form.Group>
 
             <Form.Group className="mb-3">
-        <Form.Label htmlFor="solved">solved</Form.Label>
+        <Form.Label htmlFor="solved">Solved</Form.Label>
         <Form.Control
           as="select"
           required
