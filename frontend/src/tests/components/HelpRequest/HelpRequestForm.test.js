@@ -201,7 +201,7 @@ describe("HelpRequestForm tests", () => {
           });
             expect(screen.getByText(/solved is required./)).toBeInTheDocument();
             expect(screen.getByText(/requestTime must be in ISO format/)).toBeInTheDocument();
-            expect(screen.queryByText(/requesterEmail is required./)).toBeInTheDocument();
+            expect(screen.getByText(/requesterEmail is required./)).toBeInTheDocument();
             expect(screen.getByText(/teamId is required./)).toBeInTheDocument();
             expect(screen.getByText(/tableOrBreakoutRoom is required./)).toBeInTheDocument();
             expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
