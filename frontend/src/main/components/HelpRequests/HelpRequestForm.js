@@ -21,6 +21,12 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
     const testIdPrefix = "HelpRequestForm";
 
+    const validateSolved = (value) => {
+    if (!value || value === "" || value === undefined) {
+      return "solved is required.";
+    }
+}
+
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
 
@@ -103,7 +109,7 @@ const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4
                     <Form.Control
                         data-testid={testIdPrefix + "-requestTime"}
                         id="requestTime"
-                        type="text"
+                        type="datetime-local"
                         isInvalid={Boolean(errors.requestTime)}
                         {...register("requestTime", {
                             required: "requestTime is required.",
@@ -137,20 +143,23 @@ const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4
                 </Form.Control.Feedback>
             </Form.Group>
 
+
             <Form.Group className="mb-3">
         <Form.Label htmlFor="solved">Solved</Form.Label>
         <Form.Control
+        data-testid={testIdPrefix + "-solved"}
+        id="solved"
           as="select"
           required
           isInvalid={Boolean(errors.solved)}
-          {...register("solved", { required: "solved is required." })}
+          {...register("solved", { validate: validateSolved })}
         >
           <option value="">Select an option</option>
           <option value="True">True</option>
           <option value="False">False</option>
         </Form.Control>
         <Form.Control.Feedback type="invalid">
-          {errors.solved?.message}
+          {errors.solved && errors.solved.message}
         </Form.Control.Feedback>
       </Form.Group>
 

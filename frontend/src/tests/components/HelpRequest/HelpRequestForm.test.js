@@ -191,7 +191,7 @@ describe("HelpRequestForm tests", () => {
           fireEvent.change(emailInput, { target: { value: "" } });
           fireEvent.change(teamIdInput, { target: { value: "a".repeat(31) } });
           fireEvent.change(tableOrBreakoutRoomInput, { target: { value: "" } });
-          fireEvent.change(requestTimeField, { target: { value: "2022-01-02" } });
+          fireEvent.change(requestTimeField, { target: { value: "2022-01-02T10:10" } });
           fireEvent.change(explanationInput, { target: { value: "" } });
           fireEvent.click(submitButton);
         
@@ -200,7 +200,7 @@ describe("HelpRequestForm tests", () => {
             expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
           });
             expect(screen.getByText(/solved is required./)).toBeInTheDocument();
-            expect(screen.getByText(/requestTime must be in ISO format/)).toBeInTheDocument();
+            expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
             expect(screen.getByText(/requesterEmail is required./)).toBeInTheDocument();
             expect(screen.queryByText(/teamId is required./)).not.toBeInTheDocument();
             expect(screen.getByText(/tableOrBreakoutRoom is required./)).toBeInTheDocument();
@@ -208,43 +208,12 @@ describe("HelpRequestForm tests", () => {
             expect(screen.getByText(/explanation is required./)).toBeInTheDocument();
           
 
-            fireEvent.change(requestTimeField, { target: { value: "2022-01-02T10" } });
+            fireEvent.change(requestTimeField, { target: { value: "bad:input" } });
             fireEvent.click(submitButton);
-          
-  
-          await waitFor(() => {
+            await waitFor(() => {
+              expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+            });
             expect(screen.getByText(/requestTime must be in ISO format/)).toBeInTheDocument();
-            });
-            expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
-
-            fireEvent.change(requestTimeField, { target: { value: "2022-01-02T10:10" } });
-            fireEvent.click(submitButton);
-            
-    
-          await waitFor(() => {
-            expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
-            });
-            expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
-
-            fireEvent.change(requestTimeField, { target: { value: "2022-01-02T10:10:10" } });
-            fireEvent.click(submitButton);
-            
-    
-          await waitFor(() => {
-            expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
-            });
-            expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
-
-            fireEvent.change(requestTimeField, { target: { value: "2022-01T10:10" } });
-            fireEvent.click(submitButton);
-            
-    
-          await waitFor(() => {
-            expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
-            });
-            expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
-          
-
 
 
     });
@@ -259,17 +228,24 @@ describe("HelpRequestForm tests", () => {
         );
         expect(await screen.findByText(/Create/)).toBeInTheDocument();
         const submitButton = screen.getByText(/Create/);
-        fireEvent.click(submitButton);
-        const dropdown = screen.getByText("Select an option"); // Use the appropriate label text or testId
+        const dropdown = screen.getAllByTestId("HelpRequestForm-solved"); // Use the appropriate label text or testId
+
+        
+        expect(dropdown.value).toBe(undefined);
+        expect(screen.getByText(/solved is required./)).toBeInTheDocument();
+
         fireEvent.change(dropdown, { target: { value: "True" } });
-      
+        
+        fireEvent.click(submitButton);
         expect(dropdown.value).toBe("True");
         expect(screen.queryByText(/solved is required./)).not.toBeInTheDocument();
 
         fireEvent.change(dropdown, { target: { value: "False" } });
-      
+
+        fireEvent.click(submitButton);
         expect(dropdown.value).toBe("False");
         expect(screen.queryByText(/solved is required./)).not.toBeInTheDocument();
+
       });
 
 });
