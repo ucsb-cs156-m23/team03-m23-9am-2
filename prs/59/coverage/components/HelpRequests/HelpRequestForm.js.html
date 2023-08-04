@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -243,12 +243,7 @@
 <a name='L178'></a><a href='#L178'>178</a>
 <a name='L179'></a><a href='#L179'>179</a>
 <a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L181'></a><a href='#L181'>181</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -260,33 +255,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">46x</span>
-<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">46x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">46x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -456,11 +446,15 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
     const testIdPrefix = "HelpRequestForm";
 &nbsp;
-    const validateSolved = (value) =&gt; {
-    if (!value || value === "" || value === undefined) {
-      return "solved is required.";
-    }
-}
+    const validateRequestTime = (value) =&gt; {
+        if (!value) {
+          return "requestTime is required.";
+        }
+    
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!isodate_regex.test(value)) {
+<span class="cstat-no" title="statement not covered" >          return "requestTime must be in ISO format";</span>
+        }
+      };
 &nbsp;
     return (
         &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
@@ -527,7 +521,7 @@ const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4
                     type="text"
                     isInvalid={Boolean(errors.tableOrBreakoutRoom)}
                     {...register("tableOrBreakoutRoom", {
-                        required: "tableOrBreakoutRoom is required.",
+                        required: "tableOrBreakoutRoom is required",
                         maxLength : {
                             value: 30,
                             message: "Max length 30 characters"
@@ -540,24 +534,20 @@ const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4
             &lt;/Form.Group&gt;
 &nbsp;
             &lt;Form.Group className="mb-3"&gt;
-                &lt;Form.Label htmlFor="requestTime"&gt;RequestTime&lt;/Form.Label&gt;
-                    &lt;Form.Control
-                        data-testid={testIdPrefix + "-requestTime"}
-                        id="requestTime"
-                        type="datetime-local"
-                        isInvalid={Boolean(errors.requestTime)}
-                        {...register("requestTime", {
-                            required: "requestTime is required.",
-                            pattern: {
-                            value: isodate_regex,
-                            message: "requestTime must be in ISO format",
-                        },
-                        })}
-                    /&gt;
-                &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.requestTime?.message}
-                &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
+        &lt;Form.Label htmlFor="requestTime"&gt;RequestTime&lt;/Form.Label&gt;
+        &lt;Form.Control
+          data-testid={testIdPrefix + "-requestTime"}
+          id="requestTime"
+          type="datetime-local"
+          isInvalid={Boolean(errors.requestTime)}
+          {...register("requestTime", {
+            validate: validateRequestTime,
+          })}
+        /&gt;
+        &lt;Form.Control.Feedback type="invalid"&gt;
+          {errors.requestTime?.message}
+        &lt;/Form.Control.Feedback&gt;
+      &lt;/Form.Group&gt;
 &nbsp;
 &nbsp;
 &nbsp;
@@ -585,17 +575,12 @@ const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4
         data-testid={testIdPrefix + "-solved"}
         id="solved"
           as="select"
-          required
-          isInvalid={Boolean(errors.solved)}
-          {...register("solved", { validate: validateSolved })}
+          //defaultValue={"false"}
+          {...register("solved", )}
         &gt;
-          &lt;option value=""&gt;Select an option&lt;/option&gt;
-          &lt;option value="True"&gt;True&lt;/option&gt;
-          &lt;option value="False"&gt;False&lt;/option&gt;
+          &lt;option value="true" selected&gt;true&lt;/option&gt;
+          &lt;option value="false"&gt;false&lt;/option&gt;
         &lt;/Form.Control&gt;
-        &lt;Form.Control.Feedback type="invalid"&gt;
-          {errors.solved &amp;&amp; errors.solved.message}
-        &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
 &nbsp;
 &nbsp;
@@ -625,7 +610,7 @@ export default HelpRequestForm;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Aug 04 2023 05:31:08 GMT-0700 (Pacific Daylight Time)
+                at Fri Aug 04 2023 09:44:46 GMT-0700 (Pacific Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
