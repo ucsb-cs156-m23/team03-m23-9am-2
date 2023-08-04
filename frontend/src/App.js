@@ -84,15 +84,15 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
-              <Route exact path="/helprequests" element={<HelpRequestIndexPage />} />
+              <Route exact path="/helpRequest" element={<HelpRequestIndexPage />} />
             </>
           )
         }
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-              <Route exact path="/helprequests/edit/:id" element={<HelpRequestEditPage />} />
-              <Route exact path="/helprequests/create" element={<HelpRequestCreatePage />} />
+              <Route exact path="/helpRequest/edit/:id" element={<HelpRequestEditPage />} />
+              <Route exact path="/helpRequest/create" element={<HelpRequestCreatePage />} />
             </>
           )
         }

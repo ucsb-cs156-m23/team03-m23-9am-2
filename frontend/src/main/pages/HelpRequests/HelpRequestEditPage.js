@@ -55,7 +55,7 @@ export default function HelpRequestEditPage({storybook=false}) {
     }
 
     if (isSuccess && !storybook) {
-        return <Navigate to="/helpRequests" />
+        return <Navigate to="/helpRequest" />
     }
 
     return (
