@@ -189,7 +189,7 @@ describe("HelpRequestForm tests", () => {
             expect(screen.queryByText(/explanation is required./)).not.toBeInTheDocument();
 
           fireEvent.change(emailInput, { target: { value: "" } });
-          fireEvent.change(teamIdInput, { target: { value: "" } });
+          fireEvent.change(teamIdInput, { target: { value: "a".repeat(31) } });
           fireEvent.change(tableOrBreakoutRoomInput, { target: { value: "" } });
           fireEvent.change(requestTimeField, { target: { value: "2022-01-02" } });
           fireEvent.change(explanationInput, { target: { value: "" } });
@@ -197,12 +197,12 @@ describe("HelpRequestForm tests", () => {
         
 
           await waitFor(() => {
-            expect(screen.queryByText(/Max length 30 characters/)).not.toBeInTheDocument();
+            expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
           });
             expect(screen.getByText(/solved is required./)).toBeInTheDocument();
             expect(screen.getByText(/requestTime must be in ISO format/)).toBeInTheDocument();
             expect(screen.getByText(/requesterEmail is required./)).toBeInTheDocument();
-            expect(screen.getByText(/teamId is required./)).toBeInTheDocument();
+            expect(screen.queryByText(/teamId is required./)).not.toBeInTheDocument();
             expect(screen.getByText(/tableOrBreakoutRoom is required./)).toBeInTheDocument();
             expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
             expect(screen.getByText(/explanation is required./)).toBeInTheDocument();
@@ -245,9 +245,11 @@ describe("HelpRequestForm tests", () => {
             expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
           
 
+
+
     });
 
-    test("change dropdown value", () => {
+    test("change dropdown value", async () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
@@ -255,7 +257,9 @@ describe("HelpRequestForm tests", () => {
                 </Router>
             </QueryClientProvider>
         );
-      
+        expect(await screen.findByText(/Create/)).toBeInTheDocument();
+        const submitButton = screen.getByText(/Create/);
+        fireEvent.click(submitButton);
         const dropdown = screen.getByText("Select an option"); // Use the appropriate label text or testId
         fireEvent.change(dropdown, { target: { value: "True" } });
       
