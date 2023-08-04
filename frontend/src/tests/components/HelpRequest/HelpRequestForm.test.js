@@ -208,7 +208,42 @@ describe("HelpRequestForm tests", () => {
             expect(screen.getByText(/explanation is required./)).toBeInTheDocument();
           
 
+            fireEvent.change(requestTimeField, { target: { value: "2022-01-02T10" } });
+            fireEvent.click(submitButton);
+          
+  
+          await waitFor(() => {
+            expect(screen.getByText(/requestTime must be in ISO format/)).toBeInTheDocument();
+            });
+            expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
 
+            fireEvent.change(requestTimeField, { target: { value: "2022-01-02T10:10" } });
+            fireEvent.click(submitButton);
+            
+    
+          await waitFor(() => {
+            expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
+            });
+            expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
+
+            fireEvent.change(requestTimeField, { target: { value: "2022-01-02T10:10:10" } });
+            fireEvent.click(submitButton);
+            
+    
+          await waitFor(() => {
+            expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
+            });
+            expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
+
+            fireEvent.change(requestTimeField, { target: { value: "2022-01T10:10" } });
+            fireEvent.click(submitButton);
+            
+    
+          await waitFor(() => {
+            expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
+            });
+            expect(screen.queryByText(/requestTime is required./)).not.toBeInTheDocument();
+          
 
     });
 
