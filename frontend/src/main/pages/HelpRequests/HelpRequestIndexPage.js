@@ -24,7 +24,7 @@ export default function HelpRequestIndexPage() {
             return (
                 <Button
                     variant="primary"
-                    href="/helpRequests/create"//cap
+                    href="/helprequests/create"//cap
                     style={{ float: "right" }}
                 >
                     Create HelpRequest
@@ -32,7 +32,7 @@ export default function HelpRequestIndexPage() {
             )
         } 
     }
-
+    console.log(HelpRequests)
     return (
         <BasicLayout>
             <div className="pt-2">

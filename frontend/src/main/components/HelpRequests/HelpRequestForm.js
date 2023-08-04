@@ -21,11 +21,15 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
     const testIdPrefix = "HelpRequestForm";
 
-    const validateSolved = (value) => {
-    if (!value || value === "" || value === undefined) {
-      return "solved is required.";
-    }
-}
+    const validateRequestTime = (value) => {
+        if (!value) {
+          return "requestTime is required.";
+        }
+    
+        if (!isodate_regex.test(value)) {
+          return "requestTime must be in ISO format";
+        }
+      };
 
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
@@ -92,7 +96,7 @@ const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4
                     type="text"
                     isInvalid={Boolean(errors.tableOrBreakoutRoom)}
                     {...register("tableOrBreakoutRoom", {
-                        required: "tableOrBreakoutRoom is required.",
+                        required: "tableOrBreakoutRoom is required",
                         maxLength : {
                             value: 30,
                             message: "Max length 30 characters"
@@ -105,24 +109,20 @@ const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label htmlFor="requestTime">RequestTime</Form.Label>
-                    <Form.Control
-                        data-testid={testIdPrefix + "-requestTime"}
-                        id="requestTime"
-                        type="datetime-local"
-                        isInvalid={Boolean(errors.requestTime)}
-                        {...register("requestTime", {
-                            required: "requestTime is required.",
-                            pattern: {
-                            value: isodate_regex,
-                            message: "requestTime must be in ISO format",
-                        },
-                        })}
-                    />
-                <Form.Control.Feedback type="invalid">
-                    {errors.requestTime?.message}
-                </Form.Control.Feedback>
-            </Form.Group>
+        <Form.Label htmlFor="requestTime">RequestTime</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-requestTime"}
+          id="requestTime"
+          type="datetime-local"
+          isInvalid={Boolean(errors.requestTime)}
+          {...register("requestTime", {
+            validate: validateRequestTime,
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.requestTime?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
 
 
 
@@ -150,17 +150,12 @@ const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4
         data-testid={testIdPrefix + "-solved"}
         id="solved"
           as="select"
-          required
-          isInvalid={Boolean(errors.solved)}
-          {...register("solved", { validate: validateSolved })}
+          //defaultValue={"false"}
+          {...register("solved", )}
         >
-          <option value="">Select an option</option>
-          <option value="True">True</option>
-          <option value="False">False</option>
+          <option value="true" selected>true</option>
+          <option value="false">false</option>
         </Form.Control>
-        <Form.Control.Feedback type="invalid">
-          {errors.solved && errors.solved.message}
-        </Form.Control.Feedback>
       </Form.Group>
 
 
