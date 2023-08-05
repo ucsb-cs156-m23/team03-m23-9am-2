@@ -205,7 +205,7 @@ test("change solved value", async () => {
     fireEvent.change(solvedField, { target: { value: "true" } });
 
     fireEvent.click(submitButton);
-    expect(solvedField.value).toBe("frue");
+    expect(solvedField.value).toBe("true");
 
 
   });

@@ -80,7 +80,7 @@ describe("HelpRequestEditPage tests", () => {
                 tableOrBreakoutRoom: "table02",
                 requestTime: "2022-02-02T00:00",
                 explanation: "It's very late",
-                solved: "False"
+                solved: "false"
             });
             axiosMock.onPut('/api/helprequests').reply(200, {
                 id: "17",
@@ -89,7 +89,7 @@ describe("HelpRequestEditPage tests", () => {
                 tableOrBreakoutRoom: "table01",
                 requestTime: "2023-12-12T11:11",
                 explanation: "It's very early",
-                solved: "True"
+                solved: "true"
             });
         });
 
@@ -129,7 +129,7 @@ describe("HelpRequestEditPage tests", () => {
             expect(explanationField).toBeInTheDocument();
             expect(explanationField).toHaveValue("It's very late");
             expect(solvedField).toBeInTheDocument();
-            expect(solvedField).toHaveValue("False");
+            expect(solvedField).toHaveValue("false");
 
             expect(submitButton).toHaveTextContent("Update");
 
@@ -138,13 +138,13 @@ describe("HelpRequestEditPage tests", () => {
             fireEvent.change(tableField, { target: { value: 'table01' } });
             fireEvent.change(timeField, { target: { value: '2023-12-12T11:11' } });
             fireEvent.change(explanationField, { target: { value: "It's very early" } });
-            fireEvent.change(solvedField, { target: { value: 'True' } });
+            fireEvent.change(solvedField, { target: { value: 'true' } });
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("HelpRequest Updated - id: 17 requesterEmail: FakeElfouly@ucsb.edu");
             
-            expect(mockNavigate).toBeCalledWith({ "to": "/helpRequests" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/helpRequest" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
@@ -154,7 +154,7 @@ describe("HelpRequestEditPage tests", () => {
                 tableOrBreakoutRoom: "table01",
                 requestTime: "2023-12-12T11:11",
                 explanation: "It's very early",
-                solved: "True"
+                solved: "true"
             })); // posted object
 
 
@@ -187,7 +187,7 @@ describe("HelpRequestEditPage tests", () => {
             expect(tableField).toHaveValue("table02");
             expect(timeField).toHaveValue("2022-02-02T00:00");
             expect(explanationField).toHaveValue("It's very late");
-            expect(solvedField).toHaveValue("False");
+            expect(solvedField).toHaveValue("false");
             expect(submitButton).toBeInTheDocument();
 
             fireEvent.change(emailField, { target: { value: 'FakeElfouly@ucsb.edu' } });
@@ -195,13 +195,13 @@ describe("HelpRequestEditPage tests", () => {
             fireEvent.change(tableField, { target: { value: 'table01' } });
             fireEvent.change(timeField, { target: { value: '2023-12-12T11:11' } });
             fireEvent.change(explanationField, { target: { value: "It's very early" } });
-            fireEvent.change(solvedField, { target: { value: 'True' } });
+            fireEvent.change(solvedField, { target: { value: 'true' } });
 
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("HelpRequest Updated - id: 17 requesterEmail: FakeElfouly@ucsb.edu");
-            expect(mockNavigate).toBeCalledWith({ "to": "/helpRequests" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/helpRequest" });
         });
 
        

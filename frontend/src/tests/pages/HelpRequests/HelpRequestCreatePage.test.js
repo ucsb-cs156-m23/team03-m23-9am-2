@@ -105,7 +105,7 @@ describe("HelpRequestCreatePage tests", () => {
         fireEvent.change(tableInput, { target: { value: 'table01' } })
         fireEvent.change(timeInput, { target: { value: '2023-06-06T00:12' } })
         fireEvent.change(explanationInput, { target: { value: "NowItismorning" } })
-        fireEvent.change(solvedInput, { target: { value: 'True' } })
+        fireEvent.change(solvedInput, { target: { value: 'true' } })
         fireEvent.click(createButton);
 
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
@@ -114,14 +114,14 @@ describe("HelpRequestCreatePage tests", () => {
         requesterEmail: "FakeElfouly@ucsb.edu",
           teamId: "01",
           tableOrBreakoutRoom: "table01",
-          requestTime: "2023-06-06T00:12",
+          date: "2023-06-06T00:12",
           explanation: "NowItismorning",
-          solved: "True"
+          solved: "true"
         });
 
         // assert - check that the toast was called with the expected message
         expect(mockToast).toBeCalledWith("New helpRequest Created - id: 3 requesterEmail: FakeElfouly@ucsb.edu");
-        expect(mockNavigate).toBeCalledWith({ "to": "/helpRequests" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/helpRequest" });
 
     });
 });
