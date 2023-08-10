@@ -18,15 +18,11 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
     const navigate = useNavigate();
 
     const testIdPrefix = "MenuItemReviewForm";
-    
-    return (
-        <Form onSubmit={handleSubmit(submitAction)}>
-    
-            {initialContents && (
+    /*{initialContents && (
                 <Form.Group className="mb-3" >
                     <Form.Label htmlFor="id">Id</Form.Label>
                     <Form.Control
-                        data-testid={testIdPrefix + "-id"}
+                        data-testid={testIdPrefix}
                         id="id"
                         type="text"
                         {...register("id")}
@@ -34,7 +30,11 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                         disabled
                     />
                 </Form.Group>
-            )}
+            )} */
+    return (
+        <Form onSubmit={handleSubmit(submitAction)}>
+    
+            
     
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="itemId">Item Id</Form.Label>

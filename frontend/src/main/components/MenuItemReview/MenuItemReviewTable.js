@@ -26,7 +26,6 @@ export default function MenuItemReviewTable({
     );
     // Stryker restore all 
 
-    // fix below
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [

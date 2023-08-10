@@ -27,7 +27,7 @@ const menuItemReviewFixtures = {
         {
           "id": 3,
           "itemId": 3623121,
-          "reviewerEmail": "asdasdsadasd",
+          "reviewerEmail": "aa@nnbb",
           "stars": 23,
           "localDateTime": "2023-07-28T04:55:17.787",
           "comments": "nnnnnnnnnnnnnnn"

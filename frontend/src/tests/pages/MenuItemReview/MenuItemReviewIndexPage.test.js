@@ -67,7 +67,7 @@ describe("MenuItemReviewIndexPage tests", () => {
 
     test("renders three reviews correctly for regular user", async () => {
         setupUserOnly();
-        axiosMock.onGet("/api/menuitemreview/all").reply(200, menuItemReviewFixtures.threeReviews); // Assuming you have a fixtures file for MenuItemReview with threeReviews
+        axiosMock.onGet("/api/menuitemreview/all").reply(200, menuItemReviewFixtures.threeMenuItemReview);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -77,8 +77,79 @@ describe("MenuItemReviewIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        // Continue with assertions that test the rendering of the three reviews...
+        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); });
+        expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+        expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
+
+        const createReviewButton = screen.queryByText("Create Review");
+        expect(createReviewButton).not.toBeInTheDocument();
+
+        const email2 = screen.getByText("asdasdsadasd");
+        expect(email2).toBeInTheDocument();
+
+        const comment2 = screen.getByText("aaaaaaaa");
+        expect(comment2).toBeInTheDocument();
+
+        // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
+        expect(screen.queryByTestId("ReviewTable-cell-row-0-col-Delete-button")).not.toBeInTheDocument();
+        expect(screen.queryByTestId("ReviewTable-cell-row-0-col-Edit-button")).not.toBeInTheDocument();
     });
 
-    // Continue to refactor the other tests as well to fit the MenuItemReview context...
+    
+    test("renders empty table when backend unavailable, user only", async () => {
+        setupUserOnly();
+
+        axiosMock.onGet("/api/menuitemreview/all").timeout();
+
+        const restoreConsole = mockConsole();
+
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <MenuItemReviewIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(1); });
+        
+        const errorMessage = console.error.mock.calls[0][0];
+        expect(errorMessage).toMatch("Error communicating with backend via GET on /api/menuitemreview/all");
+        restoreConsole();
+
+    });
+
+    test("what happens when you click delete, admin", async () => {
+        setupAdminUser();
+
+        axiosMock.onGet("/api/menuitemreview/all").reply(200, menuItemReviewFixtures.threeMenuItemReview);
+        axiosMock.onDelete("/api/menuitemreview").reply(200, "Review with id 1 was deleted");
+
+
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <MenuItemReviewIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
+
+        expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+
+
+        const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+        expect(deleteButton).toBeInTheDocument();
+
+        fireEvent.click(deleteButton);
+
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Review with id 1 was deleted") });
+
+        await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
+        expect(axiosMock.history.delete[0].url).toBe("/api/menuitemreview");
+        expect(axiosMock.history.delete[0].url).toBe("/api/menuitemreview");
+        expect(axiosMock.history.delete[0].params).toEqual({ id: 1 });
+    });
+
 });

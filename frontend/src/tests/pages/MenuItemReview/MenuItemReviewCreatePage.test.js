@@ -56,7 +56,7 @@ describe("MenuItemReviewCreatePage tests", () => {
 
         const queryClient = new QueryClient();
         const review = {
-            id: 2,
+            //id: 2,
             itemId: 914,
             reviewerEmail: "toji@gmail.com",
             stars: 4,
@@ -101,19 +101,19 @@ describe("MenuItemReviewCreatePage tests", () => {
         fireEvent.click(createButton);
 
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
-        /*
+        
+
         expect(axiosMock.history.post[0].params).toEqual({
-            id: 2,
-            itemId: 914,
+            //id: 2,
+            itemId: "914",
             reviewerEmail: "toji@gmail.com",
-            stars: 4,
+            stars: "4",
             localDateTime: "2023-07-28T04:04:27.541",
             comments: "unga bunga I like food"
         });
 
         // assert - check that the toast was called with the expected message
-        expect(mockToast).toBeCalledWith("New review Created - id: 2 reviewerEmail: toji@gmail.com");
-        expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });*/
-
+        expect(mockToast).toBeCalledWith("New review Created - itemId: 914 email: toji@gmail.com");
+        expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
     });
 });

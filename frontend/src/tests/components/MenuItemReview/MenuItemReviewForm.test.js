@@ -55,6 +55,14 @@ describe("MenuItemReviewForm tests", () => {
 
         expect(await screen.findByTestId(`${testId}-itemId`)).toBeInTheDocument();
         expect(screen.getByText(`Item Id`)).toBeInTheDocument();
+        expect(await screen.findByTestId(`${testId}-reviewerEmail`)).toBeInTheDocument();
+        expect(screen.getByText(`Reviewer Email`)).toBeInTheDocument();
+        expect(await screen.findByTestId(`${testId}-stars`)).toBeInTheDocument();
+        expect(screen.getByText(`Stars`)).toBeInTheDocument();
+        expect(await screen.findByTestId(`${testId}-localDateTime`)).toBeInTheDocument();
+        expect(screen.getByText(`Local Date Time`)).toBeInTheDocument();
+        expect(await screen.findByTestId(`${testId}-comments`)).toBeInTheDocument();
+        expect(screen.getByText(`Comments`)).toBeInTheDocument();
     });
 
 
@@ -73,6 +81,52 @@ describe("MenuItemReviewForm tests", () => {
 
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(-1));
     });
+
+    
+    test("error messages appear on bad input", async () => {
+        render(
+            <Router >
+                <MenuItemReviewForm />
+            </Router>
+        );
+        await screen.findByTestId(`${testId}-reviewerEmail`);
+            const requestTimeField = screen.getByTestId(`${testId}-localDateTime`);
+            const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
+        fireEvent.change(requestTimeField, {target: {value: 'bad-input'}});
+        fireEvent.click(submitButton);
+        //await screen.findByText(/Please enter a valid value. The field is incomplete or has an invalid date./);
+        await screen.findByText(/Local Date Time is required./);
+    });
+
+    test("error messages appear on bad input", async () => {
+        render(
+            <Router >
+                <MenuItemReviewForm />
+            </Router>
+        );
+        await screen.findByTestId(`${testId}-reviewerEmail`);
+            const requestTimeField = screen.getByTestId(`${testId}-stars`);
+            const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
+        fireEvent.change(requestTimeField, {target: {value: '0'}});
+        fireEvent.click(submitButton);
+        //await screen.findByText(/Please enter a valid value. The field is incomplete or has an invalid date./);
+        await screen.findByText(/Minimum value is 1/);
+    });
+
+    test("error messages appear on bad input", async () => {
+        render(
+            <Router >
+                <MenuItemReviewForm />
+            </Router>
+        );
+        await screen.findByTestId(`${testId}-reviewerEmail`);
+            const requestTimeField = screen.getByTestId(`${testId}-stars`);
+            const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
+        fireEvent.change(requestTimeField, {target: {value: '6'}});
+        fireEvent.click(submitButton);
+        await screen.findByText(/Maximum value is 5/);
+    });
+    
 
     test("that the correct validations are performed", async () => {
         render(
