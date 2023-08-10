@@ -23,7 +23,7 @@ Default.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/menuitemreview', (_req, res, ctx) => {
-            return res(ctx.json(menuitemreviewFixtures.threeMenuItemReview[0]));
+            return res(ctx.json(menuItemReviewFixtures.threeMenuItemReview[0]));
         }),
         rest.put('/api/menuitemreview', async (req, res, ctx) => {
             var reqBody = await req.text();
