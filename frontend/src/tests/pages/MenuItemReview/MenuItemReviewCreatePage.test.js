@@ -56,12 +56,12 @@ describe("MenuItemReviewCreatePage tests", () => {
 
         const queryClient = new QueryClient();
         const review = {
-            "id": 2,
-            "itemId": 914,
-            "reviewerEmail": "toji@gmail.com",
-            "stars": 4,
-            "localDateTime": "2023-07-28T04:04:27.541",
-            "comments": "unga bunga I like food"
+            id: 2,
+            itemId: 914,
+            reviewerEmail: "toji@gmail.com",
+            stars: 4,
+            localDateTime: "2023-07-28T04:04:27.541",
+            comments: "unga bunga I like food"
         };
 
         axiosMock.onPost("/api/menuitemreview/post").reply(202, review);
@@ -75,13 +75,20 @@ describe("MenuItemReviewCreatePage tests", () => {
         )
 
         await waitFor(() => {
-            expect(screen.getByLabelText("itemId")).toBeInTheDocument();
+            expect(screen.getByLabelText("Item Id")).toBeInTheDocument();
         });
 
-        const itemIdInput = screen.getByLabelText("Item ID");
+        const itemIdInput = screen.getByLabelText("Item Id");
+        expect(itemIdInput).toBeInTheDocument();
         const reviewerEmailInput = screen.getByLabelText("Reviewer Email");
+        expect(reviewerEmailInput).toBeInTheDocument();
         const starsInput = screen.getByLabelText("Stars");
+        expect(starsInput).toBeInTheDocument();
+        const ldtInput = screen.getByLabelText("Local Date Time");
+        expect(ldtInput).toBeInTheDocument();
         const commentsInput = screen.getByLabelText("Comments");
+        expect(commentsInput).toBeInTheDocument();
+        
 
         const createButton = screen.getByText("Create");
         expect(createButton).toBeInTheDocument();
@@ -89,16 +96,19 @@ describe("MenuItemReviewCreatePage tests", () => {
         fireEvent.change(itemIdInput, { target: { value: '914' } })
         fireEvent.change(reviewerEmailInput, { target: { value: 'toji@gmail.com' } })
         fireEvent.change(starsInput, { target: { value: '4' } })
+        fireEvent.change(ldtInput, { target: { value: "2023-07-28T04:04:27.541" } })
         fireEvent.change(commentsInput, { target: { value: 'unga bunga I like food' } })
         fireEvent.click(createButton);
 
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
         expect(axiosMock.history.post[0].params).toEqual({
-            "itemId": "914",
-            "reviewerEmail": "toji@gmail.com",
-            "stars": "4",
-            "comments": "unga bunga I like food"
+            id: 2,
+            itemId: 914,
+            reviewerEmail: "toji@gmail.com",
+            stars: 4,
+            localDateTime: "2023-07-28T04:04:27.541",
+            comments: "unga bunga I like food"
         });
 
         // assert - check that the toast was called with the expected message
