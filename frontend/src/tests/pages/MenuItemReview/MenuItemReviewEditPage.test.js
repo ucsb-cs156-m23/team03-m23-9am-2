@@ -91,6 +91,24 @@ describe("MenuItemReviewEditPage tests", () => {
             });
         });
 
+        const review = {
+            id: "41",
+            itemId: "541",
+            reviewerEmail: "cynthia@gmail.com",
+            stars: 4,
+            localDateTime:  "2023-12-12T11:11",
+            comments: "ayyyyyyyyy lmao"
+        };
+
+        const review2 = {
+            id: "42",
+            itemId: "542",
+            reviewerEmail: "cyndaquil@gmail.com",
+            stars: 5,
+            localDateTime:  "2021-11-12T11:11",
+            comments: "fire blast missed!"
+        };
+
         const queryClient = new QueryClient();
     
         test("Is populated with the data provided", async () => {
@@ -128,25 +146,25 @@ describe("MenuItemReviewEditPage tests", () => {
 
             expect(submitButton).toHaveTextContent("Update");
         
-            fireEvent.change(emailField, { target: { value: 'NewEmail@example.com' } });
-            fireEvent.change(itemIdField, { target: { value: 'NewItemId' } });
+            fireEvent.change(emailField, { target: { value: 'cyndaquil@gmail.com' } });
+            fireEvent.change(itemIdField, { target: { value: '542' } });
             fireEvent.change(starsField, { target: { value: '5' } });
-            fireEvent.change(dateTimeField, { target: { value: '2023-12-12T11:11' } });
-            fireEvent.change(commentsField, { target: { value: "New Comment" } });
+            fireEvent.change(dateTimeField, { target: { value: '2021-11-12T11:11' } });
+            fireEvent.change(commentsField, { target: { value: "fire blast missed!" } });
             fireEvent.click(submitButton);
         
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("MenuItemReview Updated - id: " + review.id + " reviewerEmail: NewEmail@example.com");
-            expect(mockNavigate).toBeCalledWith({ "to": "/menuItemReview" });
+            expect(mockToast).toBeCalledWith("Review Updated - itemId: " + review2.itemId + " email: cyndaquil@gmail.com");
+            expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
         
             expect(axiosMock.history.put.length).toBe(1); // times called
-            expect(axiosMock.history.put[0].params).toEqual({ id: review.id });
+            expect(axiosMock.history.put[0].params).toEqual({ id: 41 });
             expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
-                itemId: "NewItemId",
-                reviewerEmail: "NewEmail@example.com",
+                itemId: "542",
+                reviewerEmail: "cyndaquil@gmail.com",
                 stars: "5",
-                localDateTime: "2023-12-12T11:11",
-                comments: "New Comment"
+                localDateTime: "2021-11-12T11:11",
+                comments: "fire blast missed!"
             })); // posted object
         });
         
@@ -188,8 +206,8 @@ describe("MenuItemReviewEditPage tests", () => {
             fireEvent.click(submitButton);
         
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("MenuItemReview Updated - id: " + review.id + " reviewerEmail: AnotherEmail@example.com");
-            expect(mockNavigate).toBeCalledWith({ "to": "/menuItemReview" });
+            expect(mockToast).toBeCalledWith("Review Updated - itemId: " + review2.itemId + " email: cyndaquil@gmail.com");
+            expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
         });
         
 
