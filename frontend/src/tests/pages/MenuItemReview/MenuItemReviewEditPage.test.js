@@ -63,7 +63,7 @@ describe("MenuItemReviewEditPage tests", () => {
             restoreConsole();
         });
     });
-/*
+
     describe("tests where backend is working normally", () => {
 
         const axiosMock = new AxiosMockAdapter(axios);
@@ -171,7 +171,8 @@ describe("MenuItemReviewEditPage tests", () => {
             const commentsField = screen.getByTestId("MenuItemReviewForm-comments");
             const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
         
-            expect(idField).toHaveValue(review.id);
+            expect(idField).toBeInTheDocument();
+            expect(idField).toHaveValue("41");
             expect(itemIdField).toHaveValue(review.itemId);
             expect(emailField).toHaveValue(review.reviewerEmail);
             expect(starsField).toHaveValue(review.stars);
@@ -193,5 +194,5 @@ describe("MenuItemReviewEditPage tests", () => {
         
 
        
-    });*/
+    });
 });
