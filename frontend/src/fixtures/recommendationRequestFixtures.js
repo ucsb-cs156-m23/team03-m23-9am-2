@@ -8,7 +8,7 @@ const recommendationRequestFixtures = {
         "explanation": "1",
         "dateRequested": "2022-09-28T00:00:00",
         "dateNeeded": "2022-09-28T00:00:00" , 
-        "done": "1"
+        "done": "true"
              
       }
     ],
@@ -22,7 +22,7 @@ const recommendationRequestFixtures = {
             "explanation": "2",
             "dateRequested": "2022-09-28T00:00:00",
             "dateNeeded": "2022-09-28T00:00:00" , 
-            "done": "1"
+            "done": "false"
         },
 
         {
@@ -32,7 +32,7 @@ const recommendationRequestFixtures = {
             "explanation": "3",
             "dateRequested": "2022-09-28T00:00:00",
             "dateNeeded": "2022-09-28T00:00:00" , 
-            "done": "1"
+            "done": "true"
         },
 
         {
@@ -42,7 +42,7 @@ const recommendationRequestFixtures = {
             "explanation": "4",
             "dateRequested": "2022-09-28T00:00:00",
             "dateNeeded": "2022-09-28T00:00:00" , 
-            "done": "1"
+            "done": "false"
         },
         
     ]
