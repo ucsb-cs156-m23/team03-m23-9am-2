@@ -1,11 +1,11 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import UCSBOrganizationForm from "main/components/Restaurants/UCSBOrganizationForm";
-import { restaurantFixtures } from "fixtures/ucsbOrganizationFixtures";
+import UCSBOrganizationForm from "main/components/UCSBOrganization/UCSBOrganizationForm";
+import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ucsbDatesFixtures } from "fixtures/ucsbDatesFixtures";
+//import { ucsbDatesFixtures } from "fixtures/ucsbDatesFixtures";
 
 const mockedNavigate = jest.fn();
 
@@ -89,10 +89,10 @@ describe("UCSBOrganizationForm tests", () => {
         const submitButton = screen.getByText(/Create/);
         fireEvent.click(submitButton);
 
-        await screen.findByText(/Name is required/);
-        expect(screen.getByText(/Description is required/)).toBeInTheDocument();
+        await screen.findByText(/short org translation is required/);
+        expect(screen.getByText(/org Translation is required/)).toBeInTheDocument();
 
-        const nameInput = screen.getByTestId(`${testId}-name`);
+        const nameInput = screen.getByTestId(`${testId}-orgTranslationShort`);
         fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });
         fireEvent.click(submitButton);
 
