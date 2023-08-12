@@ -24,7 +24,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
 
             {initialContents && (
                 <Form.Group className="mb-3" >
-                    <Form.Label htmlFor="orgCode">orgCode</Form.Label>
+                    <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
                     <Form.Control
                         data-testid={testIdPrefix + "-orgCode"}
                         id="orgCode"
@@ -37,7 +37,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
             )}
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="orgTranslationShort">orgTranslationShort</Form.Label>
+                <Form.Label htmlFor="orgTranslationShort">OrgTranslationShort</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-orgTranslationShort"}
                     id="orgTranslationShort"
@@ -57,7 +57,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="orgTranslation">orgTranslation</Form.Label>
+                <Form.Label htmlFor="orgTranslation">OrgTranslation</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-orgTranslation"}
                     id="orgTranslation"
@@ -74,7 +74,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
 
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="inactive">inactive</Form.Label>
+                <Form.Label htmlFor="inactive">Inactive</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-inactive"}
                     id="inactive"
