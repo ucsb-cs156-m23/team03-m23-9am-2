@@ -73,24 +73,19 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
             </Form.Group>
 
 
-            <Form.Group className="mb-3" >
+            <Form.Group className="mb-3">
                 <Form.Label htmlFor="inactive">Inactive</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-inactive"}
                     id="inactive"
-                    type="checkbox"
-                    isInvalid={Boolean(errors.inactive)}
-                    {...register("inactive", {
-                        required: "active status is required."
-                    })}
-                />
-                <option value = "true" >true</option>
-                <option value = "false" >false</option>
-
-                <Form.Control.Feedback type="invalid">
-                    {errors.description?.message}
-                </Form.Control.Feedback>
+                    as="select"
+                    {...register("solved", )}
+                >
+                    <option value="true" selected>true</option>
+                    <option value="false">false</option>
+                </Form.Control>
             </Form.Group>
+
 
 
             <Button

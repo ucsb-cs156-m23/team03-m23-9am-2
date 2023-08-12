@@ -1,6 +1,6 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
-import UCSBOrganizationTable from "main/components/UCSBOrganization/UCSBOrganizationTable";
+import UCSBOrganizationTable from "main/components/UCSBOrganizations/UCSBOrganizationTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -17,7 +17,7 @@ describe("UCSBOrganizationTable tests", () => {
   const queryClient = new QueryClient();
 
   const expectedHeaders = ["OrgCode", "OrgTranslationShort", "OrgTranslation","Inactive"];
-  const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation","inactive"];
+  const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation","Inactive"];
   const testId = "UCSBOrganizationTable";
 
   test("renders empty table correctly", () => {
@@ -29,7 +29,7 @@ describe("UCSBOrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBOrganizationTable UCSBOrganization={[]} currentUser={currentUser} />
+          <UCSBOrganizationTable UCSBOrganizations={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -54,7 +54,7 @@ describe("UCSBOrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBOrganizationTable UCSBOrganization={ucsbOrganizationFixtures.threeOrganization} currentUser={currentUser} />
+          <UCSBOrganizationTable UCSBOrganizations={ucsbOrganizationFixtures.threeOrganization} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -73,17 +73,17 @@ describe("UCSBOrganizationTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("456");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("def");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("dude egg freak");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-Inactive`)).toHaveTextContent("false");
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("789");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("ghi");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("GoodHamIce");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("true");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("789");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent("ghi");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)).toHaveTextContent("GoodHamIce");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-Inactive`)).toHaveTextContent("true");
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("131415");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("mnp");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("my new porch");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent("131415");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgTranslationShort`)).toHaveTextContent("mnp");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgTranslation`)).toHaveTextContent("my new porch");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-Inactive`)).toHaveTextContent("false");
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
@@ -103,7 +103,7 @@ describe("UCSBOrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBOrganizationTable UCSBOrganization={ucsbOrganizationFixtures.threeOrganization} currentUser={currentUser} />
+          <UCSBOrganizationTable UCSBOrganizations={ucsbOrganizationFixtures.threeOrganization} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -122,17 +122,17 @@ describe("UCSBOrganizationTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("456");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("def");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("dude egg freak");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-Inactive`)).toHaveTextContent("false");
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("789");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("ghi");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("GoodHamIce");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("true");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("789");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent("ghi");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)).toHaveTextContent("GoodHamIce");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-Inactive`)).toHaveTextContent("true");
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("131415");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("mnp");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("my new porch");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent("131415");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgTranslationShort`)).toHaveTextContent("mnp");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgTranslation`)).toHaveTextContent("my new porch");
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-Inactive`)).toHaveTextContent("false");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
@@ -147,7 +147,7 @@ describe("UCSBOrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBOrganizationTable UCSBOrganization={ucsbOrganizationFixtures.threeOrganization} currentUser={currentUser} />
+          <UCSBOrganizationTable UCSBOrganizations={ucsbOrganizationFixtures.threeOrganization} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -163,7 +163,7 @@ describe("UCSBOrganizationTable tests", () => {
     fireEvent.click(editButton);
 
     // assert - check that the navigate function was called with the expected path
-    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/UCSBOrganization/edit/456'));
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsborganization/edit/456'));
 
   });
 
@@ -175,7 +175,7 @@ describe("UCSBOrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBOrganizationTable UCSBOrganization={ucsbOrganizationFixtures.threeOrganization} currentUser={currentUser} />
+          <UCSBOrganizationTable UCSBOrganizations={ucsbOrganizationFixtures.threeOrganization} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
