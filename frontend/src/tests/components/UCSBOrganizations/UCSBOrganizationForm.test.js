@@ -86,20 +86,51 @@ describe("UCSBOrganizationForm tests", () => {
         );
 
         expect(await screen.findByText(/Create/)).toBeInTheDocument();
-        const submitButton = screen.getByText(/Create/);
+        const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
         fireEvent.click(submitButton);
 
         await screen.findByText(/short org translation is required/);
         expect(screen.getByText(/org Translation is required/)).toBeInTheDocument();
 
         const nameInput = screen.getByTestId(`${testId}-orgTranslationShort`);
+        const orgTransInput = screen.getByTestId(`${testId}-orgTranslation`);
+        const inactiveInput = screen.getByTestId(`${testId}-inactive`);
+        expect(inactiveInput).toHaveValue("true");
         fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });
+        fireEvent.change(orgTransInput, { target: { value: "a".repeat(31) } });
         fireEvent.click(submitButton);
 
         await waitFor(() => {
             expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
         });
+        expect(screen.queryByText(/org Translation is required/)).not.toBeInTheDocument();
     });
+
+    test("change inactive value", async () => {
+        render(
+            <QueryClientProvider client={queryClient}>
+                <Router>
+                    <UCSBOrganizationForm />
+                </Router>
+            </QueryClientProvider>
+        );
+        expect(await screen.findByText(/Create/)).toBeInTheDocument();
+        const submitButton = screen.getByText(/Create/);
+        const inactiveField = screen.getByLabelText("Inactive");
+        expect(inactiveField).toHaveValue("true");
+    
+        fireEvent.change(inactiveField, { target: { value: "false" } });
+        
+        fireEvent.click(submitButton);
+        expect(inactiveField).toHaveValue("false");
+    
+        fireEvent.change(inactiveField, { target: { value: "true" } });
+    
+        fireEvent.click(submitButton);
+        expect(inactiveField.value).toBe("true");
+    
+    
+      });
 
 });
 
