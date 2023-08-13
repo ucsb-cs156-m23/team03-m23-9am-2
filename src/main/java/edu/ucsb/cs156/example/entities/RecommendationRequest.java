@@ -32,7 +32,12 @@ public class RecommendationRequest {
 
 }
 ////////////////////////////////////////////
-
+//requesterEmail
+//professorEmail
+//explanation
+//dateRequested
+//dateNeeded
+//done
 
 
 
