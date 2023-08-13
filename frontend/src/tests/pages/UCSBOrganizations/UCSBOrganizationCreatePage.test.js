@@ -56,7 +56,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
             orgCode: "123",
             orgTranslationShort: "abc",
             orgTranslation: "ay bruh cool",
-            inactive: false
+            inactive:false
         };
 
         axiosMock.onPost("/api/ucsborganization/post").reply(202, organization);
