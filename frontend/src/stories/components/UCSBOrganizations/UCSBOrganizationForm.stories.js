@@ -1,15 +1,15 @@
 import React from 'react';
-import UCSBOrganization from "main/components/UCSBOrganization/UCSBOrganization"
+import UCSBOrganizationForm from "main/components/UCSBOrganizations/UCSBOrganizationForm"
 import { ucsbOrganizationFixtures } from 'fixtures/ucsbOrganizationFixtures';
 
 export default {
-    title: 'components/UCSBOrganization/UCSBOrganization',
-    component: UCSBOrganization
+    title: 'components/UCSBOrganizations/UCSBOrganizationForm',
+    component: UCSBOrganizationForm
 };
 
 const Template = (args) => {
     return (
-        <UCSBOrganization {...args} />
+        <UCSBOrganizationForm {...args} />
     )
 };
 
