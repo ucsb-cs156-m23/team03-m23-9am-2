@@ -5,7 +5,7 @@ import { rest } from "msw";
 
 import UCSBOrganizationEditPage from "main/pages/UCSBOrganizations/UCSBOrganizationEditPage";
 import { ucsbOrganizationFixtures } from 'fixtures/ucsbOrganizationFixtures';
-import { ucsbOrganizationFixtures } from 'fixtures/ucsbOrganizationFixtures';
+//import { ucsbOrganizationFixtures } from 'fixtures/ucsbOrganizationFixtures';
 
 export default {
     title: 'pages/UCSBOrganizations/UCSBOrganizationEditPage',
