@@ -118,6 +118,7 @@ describe("UCSBOrganizationEditPage tests", () => {
             fireEvent.change(orgTranslationField, { target: { value: 'andrew ate app' } });
             fireEvent.change(inactiveField, { target: { value: true } });
 
+            fireEvent.click(submitButton);
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("UCSBOrganization Updated - orgCode: 123");
             

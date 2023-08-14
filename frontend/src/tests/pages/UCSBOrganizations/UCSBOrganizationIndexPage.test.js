@@ -140,7 +140,6 @@ describe("RestaurantIndexPage tests", () => {
         expect(deleteButton).toBeInTheDocument();
 
         fireEvent.click(deleteButton);
-
         await waitFor(() => { expect(mockToast).toBeCalledWith("Restaurant with id 1 was deleted") });
 
         await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
