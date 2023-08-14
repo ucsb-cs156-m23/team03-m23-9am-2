@@ -38,7 +38,7 @@ export default function RestaurantIndexPage() {
             <div className="pt-2">
                 {createButton()}
                 <h1>UCSB Organization</h1>
-                <UCSBOrganizationTable organization={organization} currentUser={currentUser} />
+                <UCSBOrganizationTable organization={organization} currentUser={currentUser} /> 
             </div>
         </BasicLayout>
     );
