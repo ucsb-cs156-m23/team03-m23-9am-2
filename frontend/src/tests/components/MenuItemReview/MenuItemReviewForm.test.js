@@ -83,7 +83,7 @@ describe("MenuItemReviewForm tests", () => {
     });
 
     
-    test("error messages appear on bad input", async () => {
+    test("error messages appear on bad input 1", async () => {
         render(
             <Router >
                 <MenuItemReviewForm />
@@ -98,7 +98,7 @@ describe("MenuItemReviewForm tests", () => {
         await screen.findByText(/Local Date Time is required./);
     });
 
-    test("error messages appear on bad input", async () => {
+    test("error messages appear on bad input 2", async () => {
         render(
             <Router >
                 <MenuItemReviewForm />
@@ -113,7 +113,7 @@ describe("MenuItemReviewForm tests", () => {
         await screen.findByText(/Minimum value is 1/);
     });
 
-    test("error messages appear on bad input", async () => {
+    test("error messages appear on bad input 3", async () => {
         render(
             <Router >
                 <MenuItemReviewForm />

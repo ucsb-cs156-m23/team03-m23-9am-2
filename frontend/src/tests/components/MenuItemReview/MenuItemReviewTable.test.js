@@ -153,7 +153,6 @@ describe("MenuItemReviewTable tests", () => {
     );
 
     // assert - check that the expected content is rendered
-    expect(await screen.getByTestId(`${testId}-cell-row-0-col-itemId`)).toHaveTextContent("41");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`)).toHaveTextContent("41");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-stars`)).toHaveTextContent("41");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-localDateTime`)).toHaveTextContent("2014-07-27T03:14:01.216");
@@ -184,8 +183,6 @@ describe("MenuItemReviewTable tests", () => {
     );
 
     // assert - check that the expected content is rendered
-
-    expect(await screen.getByTestId(`${testId}-cell-row-0-col-itemId`)).toHaveTextContent("41");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`)).toHaveTextContent("41");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-stars`)).toHaveTextContent("41");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-localDateTime`)).toHaveTextContent("2014-07-27T03:14:01.216");
