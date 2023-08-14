@@ -57,8 +57,9 @@ describe("RestaurantCreatePage tests", () => {
         const queryClient = new QueryClient();
         const UCSBDiningCommonsMenuItem = {
             id: 3,
-            name: "South Coast Deli",
-            description: "Sandwiches and Salads"
+            diningCommonsCode: "DC3",
+            name: "Item3",
+            station: "Station3"
         };
 
         axiosMock.onPost("/api/ucsbdiningcommonsmenuitem/post").reply(202, UCSBDiningCommonsMenuItem);
@@ -78,22 +79,26 @@ describe("RestaurantCreatePage tests", () => {
         const nameInput = screen.getByLabelText("Name");
         expect(nameInput).toBeInTheDocument();
 
-        const descriptionInput = screen.getByLabelText("Description");
-        expect(descriptionInput).toBeInTheDocument();
+        const stationInput = screen.getByLabelText("Station");
+        expect(stationInput).toBeInTheDocument();
+
+        const DCInput = screen.getByLabelText("DiningCommonsCode");
+        expect(DCInput).toBeInTheDocument();
 
         const createButton = screen.getByText("Create");
         expect(createButton).toBeInTheDocument();
 
-        fireEvent.change(nameInput, { target: { value: 'South Coast Deli' } })
-        fireEvent.change(descriptionInput, { target: { value: 'Sandwiches and Salads' } })
+        fireEvent.change(nameInput, { target: { value: 'Item3' } })
+        fireEvent.change(stationInput, { target: { value: 'Station3' } })
+        fireEvent.change(DCInput, { target: { value: 'DC3' } })
         fireEvent.click(createButton);
 
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
         expect(axiosMock.history.post[0].params).toEqual({
-            
+            diningCommonsCode: "DC3",
             name: "Item3",
-            station: "DC3"
+            station: "Station3"
         });
 
         // assert - check that the toast was called with the expected message
