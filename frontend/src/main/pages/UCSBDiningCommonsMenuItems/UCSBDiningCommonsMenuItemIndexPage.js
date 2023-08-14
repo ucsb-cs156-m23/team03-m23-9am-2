@@ -24,7 +24,7 @@ export default function UCSBDiningCommonsMenuItemIndexPage() {
             return (
                 <Button
                     variant="primary"
-                    href="/ucsbdiningcommonsmenuitem/create"
+                    href="/UCSBDiningCommonsMenuItem/create"
                     style={{ float: "right" }}
                 >
                     Create UCSBDiningCommonsMenuItem
