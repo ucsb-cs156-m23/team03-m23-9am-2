@@ -140,7 +140,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
         expect(deleteButton).toBeInTheDocument();
 
         fireEvent.click(deleteButton);
-        await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBOrganization with orgCode 456 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Organization with orgCode 456 was deleted") });
 
         await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
         //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");

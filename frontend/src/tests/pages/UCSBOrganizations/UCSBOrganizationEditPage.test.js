@@ -114,6 +114,8 @@ describe("UCSBOrganizationEditPage tests", () => {
             expect(orgTranslationField).toBeInTheDocument();
             expect(orgTranslationField).toHaveValue("ay bruh cool");
 
+            expect(submitButton).toHaveTextContent("Update");
+
             fireEvent.change(orgTranslationShortField, { target: { value: 'aaa' } });
             fireEvent.change(orgTranslationField, { target: { value: 'andrew ate app' } });
             fireEvent.change(inactiveField, { target: { value: true } });
