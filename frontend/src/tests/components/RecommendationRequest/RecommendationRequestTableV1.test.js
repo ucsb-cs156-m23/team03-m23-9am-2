@@ -16,8 +16,8 @@ jest.mock('react-router-dom', () => ({
 describe("RecommendationRequestTable tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["id", "RequesterEmail", "ProfessorEmail", "Explanation", "DateRequested", "DateNeeded", "Done"];
-  const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "Done"];
+  const expectedHeaders = ["id", "RequesterEmail", "ProfessorEmail","Explanation", "DateRequested", "DateNeeded","Done"];
+  const expectedFields = ["id", "RequesterEmail", "ProfessorEmail","Explanation", "DateRequested", "DateNeeded","Done"];
   const testId = "RecommendationRequestTable";
 
   test("renders empty table correctly", () => {
@@ -29,7 +29,7 @@ describe("RecommendationRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestTable recommendationRequests={[]} currentUser={currentUser} />
+          <RecommendationRequestTable recommendationRequest={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -54,7 +54,7 @@ describe("RecommendationRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestTable recommendationRequests={recommendationRequestFixtures.threeRecommendationRequests} currentUser={currentUser} />
+          <RecommendationRequestTable recommendationRequest={recommendationRequestFixtures.threeRecommendationRequest} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -71,20 +71,20 @@ describe("RecommendationRequestTable tests", () => {
     });
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("2a@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("2b@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-Done`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("Cristino@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("Cristino@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("Cristino's Bakery");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-done`)).toHaveTextContent("1");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("3a@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("3b@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("3");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-Done`)).toHaveTextContent("true");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("Freebirds@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("Freebirds@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("Freebirds");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateRequested`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateNeeded`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-done`)).toHaveTextContent("1");
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
@@ -104,7 +104,7 @@ describe("RecommendationRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestTable recommendationRequests={recommendationRequestFixtures.threeRecommendationRequests} currentUser={currentUser} />
+          <RecommendationRequestTable recommendationRequest={recommendationRequestFixtures.threeRecommendationRequest} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -121,20 +121,20 @@ describe("RecommendationRequestTable tests", () => {
     });
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("2a@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("2b@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-Done`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("Cristino@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("Cristino@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("Cristino's Bakery");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-done`)).toHaveTextContent("1");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("3a@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("3b@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("3");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-Done`)).toHaveTextContent("true");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("Freebirds@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("Freebirds@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("Freebirds");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateRequested`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateNeeded`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-done`)).toHaveTextContent("1");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
@@ -149,19 +149,20 @@ describe("RecommendationRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestTable recommendationRequests={recommendationRequestFixtures.threeRecommendationRequests} currentUser={currentUser} />
+          <RecommendationRequestTable recommendationRequest={recommendationRequestFixtures.threeRecommendationRequest} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
 
     // assert - check that the expected content is rendered
+    //done 8/10
     expect(await screen.findByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("2a@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("2b@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-Done`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("Cristino@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("Cristino@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("Cristino's Bakery");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-done`)).toHaveTextContent("1");
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
@@ -170,7 +171,7 @@ describe("RecommendationRequestTable tests", () => {
     fireEvent.click(editButton);
 
     // assert - check that the navigate function was called with the expected path
-    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/RecommendationRequest/edit/2'));
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/recommendationRequest/edit/2'));
 
   });
 
@@ -182,19 +183,19 @@ describe("RecommendationRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestTable recommendationRequests={recommendationRequestFixtures.threeRecommendationRequests} currentUser={currentUser} />
+          <RecommendationRequestTable recommendationRequest={recommendationRequestFixtures.threeRecommendationRequest} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
 
     // assert - check that the expected content is rendered
     expect(await screen.findByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("2a@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("2b@ucsb.edu");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-Done`)).toHaveTextContent("false");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("Cristino@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("Cristino@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("Cristino's Bakery");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-01-02T12:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-done`)).toHaveTextContent("1");
 
     const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
