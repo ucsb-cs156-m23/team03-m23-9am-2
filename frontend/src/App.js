@@ -27,11 +27,6 @@ import HelpRequestIndexPage from "main/pages/HelpRequests/HelpRequestIndexPage";
 import HelpRequestCreatePage from "main/pages/HelpRequests/HelpRequestCreatePage";
 import HelpRequestEditPage from "main/pages/HelpRequests/HelpRequestEditPage";
 
-import RecommendationRequestIndexPage from "main/pages/RecommendationRequests/RecommendationRequestIndexPage";
-import RecommendationRequestCreatePage from "main/pages/RecommendationRequests/RecommendationRequestCreatePage";
-import RecommendationRequestEditPage from "main/pages/RecommendationRequests/RecommendationRequestEditPage";
-
-
 
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
@@ -141,6 +136,7 @@ function App() {
             </>
           )
         }
+        
       </Routes>
     </BrowserRouter>
   );
