@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/RecommendationRequests/RecommendationRequestEditPage.js</title>
+    <title>Code coverage report for pages/HelpRequests/HelpRequestEditPage.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/RecommendationRequests</a> RecommendationRequestEditPage.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/HelpRequests</a> HelpRequestEditPage.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -207,52 +207,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
-import RecommendationRequestForm from 'main/components/RecommendationRequests/RecommendationRequestForm';
+import HelpRequestForm from 'main/components/HelpRequests/HelpRequestForm';
 import { Navigate } from 'react-router-dom'
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 &nbsp;
-export default function RecommendationRequestEditPage({storybook=false}) {
+export default function HelpRequestEditPage({storybook=false}) {
     let { id } = useParams();
 &nbsp;
-    const { data: RecommendationRequest, _error, _status } =
+    const { data: helpRequest, _error, _status } =
         useBackend(
             // Stryker disable next-line all : don't test internal caching of React Query
-            [`/api/RecommendationRequest?id=${id}`],
+            [`/api/helprequests?id=${id}`],
             {  // Stryker disable next-line all : GET is the default, so mutating this to "" doesn't introduce a bug
                 method: "GET",
-                url: `/api/RecommendationRequest`,
+                url: `/api/helprequests`,
                 params: {
                     id
                 }
             }
         );
 &nbsp;
-    const objectToAxiosPutParams = (RecommendationRequest) =&gt; ({
-        url: "/api/RecommendationRequest",
+    const objectToAxiosPutParams = (helpRequest) =&gt; ({
+        url: "/api/helprequests",
         method: "PUT",
         params: {
-            id: RecommendationRequest.id,
+            id: helpRequest.id,
         },
         data: {
-            requesterEmail: RecommendationRequest.requesterEmail,
-            professorEmail: RecommendationRequest.professorEmail,
-            explanation: RecommendationRequest.explanation,
-            dateRequested: RecommendationRequest.dateRequested,
-            dateNeeded: RecommendationRequest.dateNeeded,
-            done: RecommendationRequest.done
+          requesterEmail: helpRequest.requesterEmail,
+          teamId: helpRequest.teamId,
+          tableOrBreakoutRoom: helpRequest.tableOrBreakoutRoom,
+          requestTime: helpRequest.requestTime,
+          explanation: helpRequest.explanation,
+          solved: helpRequest.solved
         }
     });
 &nbsp;
-    const onSuccess = (RecommendationRequest) =&gt; {
-        toast(`RecommendationRequest Updated - id: ${RecommendationRequest.id} Requester: ${RecommendationRequest.requesterEmail}`);
+    const onSuccess = (helpRequest) =&gt; {
+        toast(`HelpRequest Updated - id: ${helpRequest.id} requesterEmail: ${helpRequest.requesterEmail}`);
     }
 &nbsp;
     const mutation = useBackendMutation(
         objectToAxiosPutParams,
         { onSuccess },
         // Stryker disable next-line all : hard to set up test for caching
-        [`/api/RecommendationRequest?id=${id}`]
+        [`/api/helprequests?id=${id}`]
     );
 &nbsp;
     const { isSuccess } = mutation
@@ -262,15 +262,15 @@ export default function RecommendationRequestEditPage({storybook=false}) {
     }
 &nbsp;
     if (isSuccess &amp;&amp; !storybook) {
-        return &lt;Navigate to="/RecommendationRequest" /&gt;
+        return &lt;Navigate to="/helpRequest" /&gt;
     }
 &nbsp;
     return (
         &lt;BasicLayout&gt;
             &lt;div className="pt-2"&gt;
-                &lt;h1&gt;Edit RecommendationRequest&lt;/h1&gt;
+                &lt;h1&gt;Edit HelpRequest&lt;/h1&gt;
                 {
-                    RecommendationRequest &amp;&amp; &lt;RecommendationRequestForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={RecommendationRequest} /&gt;
+                    helpRequest &amp;&amp; &lt;HelpRequestForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={helpRequest} /&gt;
                 }
             &lt;/div&gt;
         &lt;/BasicLayout&gt;
@@ -283,7 +283,7 @@ export default function RecommendationRequestEditPage({storybook=false}) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Aug 14 2023 20:06:29 GMT-0700 (Pacific Daylight Time)
+                at Mon Aug 14 2023 21:03:06 GMT-0700 (Pacific Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>

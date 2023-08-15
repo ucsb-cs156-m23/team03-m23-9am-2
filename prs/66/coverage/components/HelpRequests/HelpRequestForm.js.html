@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/RecommendationRequests/RecommendationRequestForm.js</title>
+    <title>Code coverage report for components/HelpRequests/HelpRequestForm.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/RecommendationRequests</a> RecommendationRequestForm.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/HelpRequests</a> HelpRequestForm.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/16</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/16</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -243,8 +243,7 @@
 <a name='L178'></a><a href='#L178'>178</a>
 <a name='L179'></a><a href='#L179'>179</a>
 <a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L181'></a><a href='#L181'>181</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -256,21 +255,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
@@ -278,17 +276,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -429,7 +427,7 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 &nbsp;
-function RecommendationRequestForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 &nbsp;
     
     // Stryker disable all
@@ -441,33 +439,22 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
         { defaultValues: initialContents || {}, }
     );
     // Stryker restore all
+&nbsp;
    
     const navigate = useNavigate();
+// Stryker disable next-line Regex
+const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+    const testIdPrefix = "HelpRequestForm";
 &nbsp;
-&nbsp;
-    // Stryker disable next-line Regex
-    const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-    const testIdPrefix = "RecommendationRequestForm";
-&nbsp;
-    const validateDateNeeded = (value) =&gt; {
+    const validateRequestTime = (value) =&gt; {
         if (!value) {
-            return "dateNeeded is required.";
+          return "requestTime is required.";
         }
-&nbsp;
+    
         if (!isodate_regex.test(value)) {
-        return "dateNeeded must be in ISO format";
+          return "requestTime must be in ISO format";
         }
-    };
-&nbsp;
-    const validateDateRequested = (value) =&gt; {
-        if (!value) {
-            return "dateRequested is required.";
-        }
-&nbsp;
-        if (!isodate_regex.test(value)) {
-        return "dateRequested must be in ISO format";
-        }
-    };
+      };
 &nbsp;
     return (
         &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
@@ -507,14 +494,14 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
             &lt;/Form.Group&gt;
 &nbsp;
             &lt;Form.Group className="mb-3" &gt;
-                &lt;Form.Label htmlFor="professorEmail"&gt;ProfessorEmail&lt;/Form.Label&gt;
+                &lt;Form.Label htmlFor="teamId"&gt;TeamId&lt;/Form.Label&gt;
                 &lt;Form.Control
-                    data-testid={testIdPrefix + "-professorEmail"}
-                    id="professorEmail"
+                    data-testid={testIdPrefix + "-teamId"}
+                    id="teamId"
                     type="text"
-                    isInvalid={Boolean(errors.professorEmail)}
-                    {...register("professorEmail", {
-                        required: "professorEmail is required.",
+                    isInvalid={Boolean(errors.teamId)}
+                    {...register("teamId", {
+                        required: "teamId is required.",
                         maxLength : {
                             value: 30,
                             message: "Max length 30 characters"
@@ -522,10 +509,49 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                     })}
                 /&gt;
                 &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.professorEmail?.message}
+                    {errors.teamId?.message}
                 &lt;/Form.Control.Feedback&gt;
             &lt;/Form.Group&gt;
-            
+&nbsp;
+            &lt;Form.Group className="mb-3" &gt;
+                &lt;Form.Label htmlFor="tableOrBreakoutRoom"&gt;TableOrBreakoutRoom&lt;/Form.Label&gt;
+                &lt;Form.Control
+                    data-testid={testIdPrefix + "-tableOrBreakoutRoom"}
+                    id="tableOrBreakoutRoom"
+                    type="text"
+                    isInvalid={Boolean(errors.tableOrBreakoutRoom)}
+                    {...register("tableOrBreakoutRoom", {
+                        required: "tableOrBreakoutRoom is required",
+                        maxLength : {
+                            value: 30,
+                            message: "Max length 30 characters"
+                        }
+                    })}
+                /&gt;
+                &lt;Form.Control.Feedback type="invalid"&gt;
+                    {errors.tableOrBreakoutRoom?.message}
+                &lt;/Form.Control.Feedback&gt;
+            &lt;/Form.Group&gt;
+&nbsp;
+            &lt;Form.Group className="mb-3"&gt;
+        &lt;Form.Label htmlFor="requestTime"&gt;RequestTime&lt;/Form.Label&gt;
+        &lt;Form.Control
+          data-testid={testIdPrefix + "-requestTime"}
+          id="requestTime"
+          type="text"
+          isInvalid={Boolean(errors.requestTime)}
+          {...register("requestTime", {
+            validate: validateRequestTime,
+          })}
+        /&gt;
+        &lt;Form.Control.Feedback type="invalid"&gt;
+          {errors.requestTime?.message}
+        &lt;/Form.Control.Feedback&gt;
+      &lt;/Form.Group&gt;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
             &lt;Form.Group className="mb-3" &gt;
                 &lt;Form.Label htmlFor="explanation"&gt;Explanation&lt;/Form.Label&gt;
                 &lt;Form.Control
@@ -534,7 +560,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                     type="text"
                     isInvalid={Boolean(errors.explanation)}
                     {...register("explanation", {
-                        required: "explanation is required."
+                        required: "explanation is required.",
                     })}
                 /&gt;
                 &lt;Form.Control.Feedback type="invalid"&gt;
@@ -542,50 +568,21 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                 &lt;/Form.Control.Feedback&gt;
             &lt;/Form.Group&gt;
 &nbsp;
-            &lt;Form.Group className="mb-3" &gt;
-                &lt;Form.Label htmlFor="dateRequested"&gt;DateRequested&lt;/Form.Label&gt;
-                &lt;Form.Control
-                    data-testid={testIdPrefix + "-dateRequested"}
-                    id="dateRequested"
-                    type="text"
-                    isInvalid={Boolean(errors.dateRequested)}
-                    {...register("dateRequested", {
-                        validate: validateDateRequested,
-                    })}
-                /&gt;
-                &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.dateRequested?.message}
-                &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
 &nbsp;
-            &lt;Form.Group className="mb-3" &gt;
-                &lt;Form.Label htmlFor="dateNeeded"&gt;DateNeeded&lt;/Form.Label&gt;
-                &lt;Form.Control
-                    data-testid={testIdPrefix + "-dateNeeded"}
-                    id="dateNeeded"
-                    type="text"
-                    isInvalid={Boolean(errors.dateNeeded)}
-                    {...register("dateNeeded", {
-                        validate: validateDateNeeded,
-                    })}
-                    /&gt;
-                &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.dateNeeded?.message}
-                &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
+            &lt;Form.Group className="mb-3"&gt;
+        &lt;Form.Label htmlFor="solved"&gt;Solved&lt;/Form.Label&gt;
+        &lt;Form.Control
+        data-testid={testIdPrefix + "-solved"}
+        id="solved"
+          as="select"
+          //defaultValue={"false"}
+          {...register("solved", )}
+        &gt;
+          &lt;option value="true" selected&gt;true&lt;/option&gt;
+          &lt;option value="false"&gt;false&lt;/option&gt;
+        &lt;/Form.Control&gt;
+      &lt;/Form.Group&gt;
 &nbsp;
-            &lt;Form.Group className="mb-3" &gt;
-                &lt;Form.Label htmlFor="done"&gt;Done&lt;/Form.Label&gt;
-                &lt;Form.Control
-                    data-testid={testIdPrefix + "-done"}
-                    id="done"
-                    as="select"
-                    {...register("done", )}
-                &gt;
-                    &lt;option value="true" selected&gt;true&lt;/option&gt;
-                    &lt;option value="false"&gt;false&lt;/option&gt;
-                &lt;/Form.Control&gt;
-            &lt;/Form.Group&gt;
 &nbsp;
             &lt;Button
                 type="submit"
@@ -606,14 +603,14 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
     )
 }
 &nbsp;
-export default RecommendationRequestForm;</pre></td></tr></table></pre>
+export default HelpRequestForm;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Aug 14 2023 20:06:29 GMT-0700 (Pacific Daylight Time)
+                at Mon Aug 14 2023 21:03:06 GMT-0700 (Pacific Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
