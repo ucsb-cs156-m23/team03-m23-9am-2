@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
-import RecommendationRequestForm from "main/components/RecommendationRequest/RecommendationRequestForm";
+import RecommendationRequestForm from "main/components/RecommendationRequests/RecommendationRequestForm";
 const mockedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
