@@ -1,4 +1,4 @@
-import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+import BasicLayout from "main/layouts/BasicLayout/BasicLayout";//restaurant
 import RecommendationRequestForm from "main/components/RecommendationRequests/RecommendationRequestForm";
 import { Navigate } from 'react-router-dom'
 import { useBackendMutation } from "main/utils/useBackend";
