@@ -74,16 +74,16 @@ describe("RecommendationRequestTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("2a@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("2b@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T10:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T20:00:00");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-Done`)).toHaveTextContent("false");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("3a@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("3b@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("3");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateRequested`)).toHaveTextContent("2023-09-28T10:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateNeeded`)).toHaveTextContent("2023-09-28T20:00:00");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-Done`)).toHaveTextContent("true");
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
@@ -124,16 +124,16 @@ describe("RecommendationRequestTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("2a@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("2b@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T10:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T20:00:00");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-Done`)).toHaveTextContent("false");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("3a@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("3b@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("3");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateRequested`)).toHaveTextContent("2023-09-28T10:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-dateNeeded`)).toHaveTextContent("2023-09-28T20:00:00");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-Done`)).toHaveTextContent("true");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
@@ -159,8 +159,8 @@ describe("RecommendationRequestTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("2a@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("2b@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T10:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T20:00:00");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-Done`)).toHaveTextContent("false");
 
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
@@ -192,8 +192,8 @@ describe("RecommendationRequestTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("2a@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("2b@ucsb.edu");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T00:00:00");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T00:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateRequested`)).toHaveTextContent("2022-09-28T10:00:00");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-dateNeeded`)).toHaveTextContent("2022-09-28T20:00:00");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-Done`)).toHaveTextContent("false");
 
     const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);

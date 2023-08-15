@@ -2,7 +2,7 @@ import React from 'react'
 import { useBackend } from 'main/utils/useBackend';
 
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import RecommendationRequestTable from 'main/components/RecommendationRequest/RecommendationRequestTable';
+import RecommendationRequestTable from 'main/components/RecommendationRequests/RecommendationRequestTable';
 import { useCurrentUser , hasRole} from 'main/utils/currentUser'
 import { Button } from 'react-bootstrap';
 
@@ -10,11 +10,11 @@ export default function RecommendationRequestIndexPage() {
 
     const currentUser = useCurrentUser();
 
-    const { data: recommendationRequest, error: _error, status: _status } =
+    const { data: recommendationRequests, error: _error, status: _status } =
         useBackend(
             // Stryker disable next-line all : don't test internal caching of React Query
-            ["/api/recommendationRequest/all"],
-            { method: "GET", url: "/api/recommendationRequest/all" },
+            ["/api/RecommendationRequest/all"],
+            { method: "GET", url: "/api/RecommendationRequest/all" },
             // Stryker disable next-line all : don't test default value of empty list
             []
         );
@@ -24,7 +24,7 @@ export default function RecommendationRequestIndexPage() {
             return (
                 <Button
                     variant="primary"
-                    href="/recommendationRequest/create"
+                    href="/RecommendationRequest/create"
                     style={{ float: "right" }}
                 >
                     Create RecommendationRequest
@@ -38,9 +38,8 @@ export default function RecommendationRequestIndexPage() {
             <div className="pt-2">
                 {createButton()}
                 <h1>RecommendationRequest</h1>
-                <RecommendationRequestTable recommendationRequest={recommendationRequest} currentUser={currentUser} />
+                <RecommendationRequestTable recommendationRequests={recommendationRequests} currentUser={currentUser} />
             </div>
         </BasicLayout>
     );
 }
-//rest

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
+import RecommendationRequestCreatePage from "main/pages/RecommendationRequests/RecommendationRequestCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -52,22 +52,20 @@ describe("RecommendationRequestCreatePage tests", () => {
         );
     });
 
-    test("on submit, makes request to backend, and redirects to /recommendationRequest", async () => {
+    test("on submit, makes request to backend, and redirects to /RecommendationRequest", async () => {
 
         const queryClient = new QueryClient();
-        const recommendationRequest = {
+        const RecommendationRequest = {
             id: 3,
-            //name: "South Coast Deli",
-            //description: "Sandwiches and Salads"
-            requesterEmail: "south@ucsb.edu",
-            professorEmail: "south@ucsb.edu",
-            explanation: "south",
-            dateRequested: "2023-08-12T14:44:35",
-            dateNeeded: "2023-08-12T14:44:35",
+            requesterEmail: "3a@ucsb.edu",
+            professorEmail: "3b@ucsb.edu" ,
+            explanation: "3",
+            dateRequested: "2022-09-28T00:00:00",
+            dateNeeded: "2022-09-28T00:00:00" , 
             done: "true"
         };
 
-        axiosMock.onPost("/api/recommendationRequest/post").reply(202, recommendationRequest);
+        axiosMock.onPost("/api/RecommendationRequest/post").reply(202, RecommendationRequest);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -81,18 +79,20 @@ describe("RecommendationRequestCreatePage tests", () => {
             expect(screen.getByLabelText("RequesterEmail")).toBeInTheDocument();
         });
 
-        const requesterEmailInput = screen.getByLabelText("RequesterEmail");
-        expect(requesterEmailInput).toBeInTheDocument();
+        const requesterInput = screen.getByLabelText("RequesterEmail");
+        expect(requesterInput).toBeInTheDocument();
 
-        const professorEmailInput = screen.getByLabelText("ProfessorEmail");
-        expect(professorEmailInput).toBeInTheDocument();
+        const profInput = screen.getByLabelText("ProfessorEmail");
+        expect(profInput).toBeInTheDocument();
 
         const explanationInput = screen.getByLabelText("Explanation");
         expect(explanationInput).toBeInTheDocument();
-        const dateRequestedInput = screen.getByLabelText("DateRequested");
-        expect(dateRequestedInput).toBeInTheDocument();
+
         const dateNeededInput = screen.getByLabelText("DateNeeded");
         expect(dateNeededInput).toBeInTheDocument();
+
+        const dateRequestedInput = screen.getByLabelText("DateRequested");
+        expect(dateRequestedInput).toBeInTheDocument();
 
         const doneInput = screen.getByLabelText("Done");
         expect(doneInput).toBeInTheDocument();
@@ -100,35 +100,28 @@ describe("RecommendationRequestCreatePage tests", () => {
         const createButton = screen.getByText("Create");
         expect(createButton).toBeInTheDocument();
 
-        fireEvent.change(requesterEmailInput, { target: { value: 'south@ucsb.edu' } })
-        fireEvent.change(professorEmailInput, { target: { value: 'south@ucsb.edu' } })
-        fireEvent.change(explanationInput, { target: { value: 'south' } })
-        fireEvent.change(dateRequestedInput, { target: { value: '2023-08-12T14:44:35' } })
-        fireEvent.change(dateNeededInput, { target: { value: '2023-08-12T14:44:35' } })
+        fireEvent.change(requesterInput, { target: { value: '3a@ucsb.edu' } })
+        fireEvent.change(profInput, { target: { value: '3b@ucsb.edu' } })
+        fireEvent.change(explanationInput, { target: { value: '3' } })
+        fireEvent.change(dateNeededInput, { target: { value: '2022-09-28T00:00:00' } })
+        fireEvent.change(dateRequestedInput, { target: { value: '2022-09-28T00:00:00' } })
         fireEvent.change(doneInput, { target: { value: 'true' } })
-        
         fireEvent.click(createButton);
 
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
         expect(axiosMock.history.post[0].params).toEqual({
-            //name: "South Coast Deli",
-            //description: "Sandwiches and Salads"
-            requesterEmail: "south@ucsb.edu",
-            professorEmail: "south@ucsb.edu",
-            explanation: "south",
-            dateRequested: "2023-08-12T14:44:35",
-            dateNeeded: "2023-08-12T14:44:35",
+            requesterEmail: "3a@ucsb.edu",
+            professorEmail: "3b@ucsb.edu" ,
+            explanation: "3",
+            dateRequested: "2022-09-28T00:00:00",
+            dateNeeded: "2022-09-28T00:00:00" , 
             done: "true"
-
         });
 
         // assert - check that the toast was called with the expected message
-        expect(mockToast).toBeCalledWith("New recommendationRequest Created - id: 3 requesterEmail: south@ucsb.edu professorEmail: south@ucsb.edu explanation: south dateRequested: 2023-08-12T14:44:35 dateNeeded: 2023-08-12T14:44:35 done: true");
-        
-            
-            
-        expect(mockNavigate).toBeCalledWith({ "to": "/recommendationRequest" });
+        expect(mockToast).toBeCalledWith("New RecommendationRequest Created - id: 3 requester: 3a@ucsb.edu");
+        expect(mockNavigate).toBeCalledWith({ "to": "/RecommendationRequest" });
 
     });
 });

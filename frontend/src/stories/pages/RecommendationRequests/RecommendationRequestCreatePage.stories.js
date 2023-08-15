@@ -3,10 +3,10 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { rest } from "msw";
 
-import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage"
+import RecommendationRequestCreatePage from "main/pages/RecommendationRequests/RecommendationRequestCreatePage"
 
 export default {
-    title: 'pages/RecommendationRequest/RecommendationRequestCreatePage',
+    title: 'pages/RecommendationRequests/RecommendationRequestCreatePage',
     component: RecommendationRequestCreatePage
 };
 
@@ -21,12 +21,12 @@ Default.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.post('/api/recommendationRequest/post', (req, res, ctx) => {
+        rest.post('/api/RecommendationRequest/post', (req, res, ctx) => {
             window.alert("POST: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),
     ]
 }
 
-//rest
+
 

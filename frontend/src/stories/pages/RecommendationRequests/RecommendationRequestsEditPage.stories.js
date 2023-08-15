@@ -3,11 +3,11 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { rest } from "msw";
 
-import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
+import RecommendationRequestEditPage from "main/pages/RecommendationRequests/RecommendationRequestEditPage";
 import { recommendationRequestFixtures } from 'fixtures/recommendationRequestFixtures';
 
 export default {
-    title: 'pages/RecommendationRequest/RecommendationRequestEditPage',
+    title: 'pages/RecommendationRequests/RecommendationRequestEditPage',
     component: RecommendationRequestEditPage
 };
 
@@ -22,16 +22,16 @@ Default.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/recommendationRequest', (_req, res, ctx) => {
-            return res(ctx.json(recommendationRequestFixtures.threeRecommendationRequest[0]));
+        rest.get('/api/RecommendationRequest', (_req, res, ctx) => {
+            return res(ctx.json(recommendationRequestFixtures.threeRecommendationRequests[0]));
         }),
-        rest.put('/api/recommendationRequest', async (req, res, ctx) => {
+        rest.put('/api/RecommendationRequest', async (req, res, ctx) => {
             var reqBody = await req.text();
             window.alert("PUT: " + req.url + " and body: " + reqBody);
             return res(ctx.status(200),ctx.json({}));
         }),
     ],
 }
-//restaur
+
 
 
