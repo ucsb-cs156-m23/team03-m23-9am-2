@@ -6,7 +6,7 @@ import UCSBOrganizationTable from 'main/components/UCSBOrganizations/UCSBOrganiz
 import { useCurrentUser , hasRole} from 'main/utils/currentUser'
 import { Button } from 'react-bootstrap';
 
-export default function RestaurantIndexPage() {
+export default function UCSBOrganizationIndexPage() {
 
     const currentUser = useCurrentUser();
 
