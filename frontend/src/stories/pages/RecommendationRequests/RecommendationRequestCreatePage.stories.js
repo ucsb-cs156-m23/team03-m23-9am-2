@@ -3,14 +3,14 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { rest } from "msw";
 
-import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage"
+import RecommendationRequestCreatePage from "main/pages/RecommendationRequests/RecommendationRequestCreatePage"
 
 export default {
-    title: 'pages/Restaurants/RestaurantCreatePage',
-    component: RestaurantCreatePage
+    title: 'pages/RecommendationRequests/RecommendationRequestCreatePage',
+    component: RecommendationRequestCreatePage
 };
 
-const Template = () => <RestaurantCreatePage storybook={true} />;
+const Template = () => <RecommendationRequestCreatePage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -21,7 +21,7 @@ Default.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.post('/api/restaurants/post', (req, res, ctx) => {
+        rest.post('/api/RecommendationRequest/post', (req, res, ctx) => {
             window.alert("POST: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),

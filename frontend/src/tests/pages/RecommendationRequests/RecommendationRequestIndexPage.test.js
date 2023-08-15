@@ -1,9 +1,9 @@
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
-import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";
+import RecommendationRequestIndexPage from "main/pages/RecommendationRequests/RecommendationRequestIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import mockConsole from "jest-mock-console";
-import { restaurantFixtures } from "fixtures/restaurantFixtures";
+import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -20,11 +20,11 @@ jest.mock('react-toastify', () => {
     };
 });
 
-describe("RestaurantIndexPage tests", () => {
+describe("RecommendationRequestIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
 
-    const testId = "RestaurantTable";
+    const testId = "RecommendationRequestTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -45,32 +45,32 @@ describe("RestaurantIndexPage tests", () => {
 
     test("Renders with Create Button for admin user", async () => {
         setupAdminUser();
-        axiosMock.onGet("/api/restaurants/all").reply(200, []);
+        axiosMock.onGet("/api/RecommendationRequest/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RestaurantIndexPage />
+                    <RecommendationRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
 
         await waitFor(() => {
-            expect(screen.getByText(/Create Restaurant/)).toBeInTheDocument();
+            expect(screen.getByText(/Create RecommendationRequest/)).toBeInTheDocument();
         });
-        const button = screen.getByText(/Create Restaurant/);
-        expect(button).toHaveAttribute("href", "/restaurants/create");
+        const button = screen.getByText(/Create RecommendationRequest/);
+        expect(button).toHaveAttribute("href", "/RecommendationRequest/create");
         expect(button).toHaveAttribute("style", "float: right;");
     });
 
-    test("renders three restaurants correctly for regular user", async () => {
+    test("renders three RecommendationRequests correctly for regular user", async () => {
         setupUserOnly();
-        axiosMock.onGet("/api/restaurants/all").reply(200, restaurantFixtures.threeRestaurants);
+        axiosMock.onGet("/api/RecommendationRequest/all").reply(200, recommendationRequestFixtures.threeRecommendationRequests);
 
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RestaurantIndexPage />
+                    <RecommendationRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -79,31 +79,43 @@ describe("RestaurantIndexPage tests", () => {
         expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
         expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("4");
 
-        const createRestaurantButton = screen.queryByText("Create Restaurant");
-        expect(createRestaurantButton).not.toBeInTheDocument();
+        const createRecommendationRequestButton = screen.queryByText("Create RecommendationRequest");
+        expect(createRecommendationRequestButton).not.toBeInTheDocument();
 
-        const name = screen.getByText("Freebirds");
-        expect(name).toBeInTheDocument();
+        const requesterEmail = screen.getByText("2a@ucsb.edu");
+        expect(requesterEmail).toBeInTheDocument();
 
-        const description = screen.getByText("Burrito joint, and iconic Isla Vista location");
-        expect(description).toBeInTheDocument();
+        const professorEmail = screen.getByText("2b@ucsb.edu");
+        expect(professorEmail).toBeInTheDocument();
+
+        const explanation = screen.getByText("explanation2");
+        expect(explanation).toBeInTheDocument();
+
+        const dateRequested = screen.getByText("2022-09-28T10:00:00");
+        expect(dateRequested).toBeInTheDocument();
+
+        const dateNeeded = screen.getByText("2022-09-28T20:00:00");
+        expect(dateNeeded).toBeInTheDocument();
+
+        const done = screen.getByText("true");
+        expect(done).toBeInTheDocument();
 
         // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
-        expect(screen.queryByTestId("RestaurantTable-cell-row-0-col-Delete-button")).not.toBeInTheDocument();
-        expect(screen.queryByTestId("RestaurantTable-cell-row-0-col-Edit-button")).not.toBeInTheDocument();
+        expect(screen.queryByTestId("RecommendationRequestTable-cell-row-0-col-Delete-button")).not.toBeInTheDocument();
+        expect(screen.queryByTestId("RecommendationRequestTable-cell-row-0-col-Edit-button")).not.toBeInTheDocument();
     });
 
     test("renders empty table when backend unavailable, user only", async () => {
         setupUserOnly();
 
-        axiosMock.onGet("/api/restaurants/all").timeout();
+        axiosMock.onGet("/api/RecommendationRequest/all").timeout();
 
         const restoreConsole = mockConsole();
 
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RestaurantIndexPage />
+                    <RecommendationRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -111,7 +123,7 @@ describe("RestaurantIndexPage tests", () => {
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(1); });
         
         const errorMessage = console.error.mock.calls[0][0];
-        expect(errorMessage).toMatch("Error communicating with backend via GET on /api/restaurants/all");
+        expect(errorMessage).toMatch("Error communicating with backend via GET on /api/RecommendationRequest/all");
         restoreConsole();
 
     });
@@ -119,14 +131,14 @@ describe("RestaurantIndexPage tests", () => {
     test("what happens when you click delete, admin", async () => {
         setupAdminUser();
 
-        axiosMock.onGet("/api/restaurants/all").reply(200, restaurantFixtures.threeRestaurants);
-        axiosMock.onDelete("/api/restaurants").reply(200, "Restaurant with id 1 was deleted");
+        axiosMock.onGet("/api/RecommendationRequest/all").reply(200, recommendationRequestFixtures.threeRecommendationRequests);
+        axiosMock.onDelete("/api/RecommendationRequest").reply(200, "RecommendationRequest with id 1 was deleted");
 
 
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RestaurantIndexPage />
+                    <RecommendationRequestIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -141,11 +153,11 @@ describe("RestaurantIndexPage tests", () => {
 
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Restaurant with id 1 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("RecommendationRequest with id 1 was deleted") });
 
         await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
-        expect(axiosMock.history.delete[0].url).toBe("/api/restaurants");
-        expect(axiosMock.history.delete[0].url).toBe("/api/restaurants");
+        expect(axiosMock.history.delete[0].url).toBe("/api/RecommendationRequest");
+        expect(axiosMock.history.delete[0].url).toBe("/api/RecommendationRequest");
         expect(axiosMock.history.delete[0].params).toEqual({ id: 2 });
     });
 

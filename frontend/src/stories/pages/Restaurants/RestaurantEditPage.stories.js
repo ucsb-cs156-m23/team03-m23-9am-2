@@ -3,15 +3,15 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { rest } from "msw";
 
-import RecommendationRequestEditPage from "main/pages/RecommendationRequests/RecommendationRequestEditPage";
-import { recommendationRequestFixtures } from 'fixtures/recommendationRequestFixtures';
+import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
+import { restaurantFixtures } from 'fixtures/restaurantFixtures';
 
 export default {
-    title: 'pages/RecommendationRequests/RecommendationRequestEditPage',
-    component: RecommendationRequestEditPage
+    title: 'pages/Restaurants/RestaurantEditPage',
+    component: RestaurantEditPage
 };
 
-const Template = () => <RecommendationRequestEditPage storybook={true}/>;
+const Template = () => <RestaurantEditPage storybook={true}/>;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -22,10 +22,10 @@ Default.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/RecommendationRequest', (_req, res, ctx) => {
-            return res(ctx.json(recommendationRequestFixtures.threeRequests[0]));
+        rest.get('/api/restaurants', (_req, res, ctx) => {
+            return res(ctx.json(restaurantFixtures.threeRestaurants[0]));
         }),
-        rest.put('/api/RecommendationRequest', async (req, res, ctx) => {
+        rest.put('/api/restaurants', async (req, res, ctx) => {
             var reqBody = await req.text();
             window.alert("PUT: " + req.url + " and body: " + reqBody);
             return res(ctx.status(200),ctx.json({}));
