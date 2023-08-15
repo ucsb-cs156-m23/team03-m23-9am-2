@@ -13,6 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
+
 describe("RestaurantForm tests", () => {
     const queryClient = new QueryClient();
 
@@ -34,7 +35,6 @@ describe("RestaurantForm tests", () => {
             const header = screen.getByText(headerText);
             expect(header).toBeInTheDocument();
         });
-
     });
 
     test("renders correctly when passing in initialContents", async () => {
