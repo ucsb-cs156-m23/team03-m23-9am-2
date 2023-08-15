@@ -84,7 +84,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
         fireEvent.change(orgTranslationShortField, { target: { value: 'abc' } });
         fireEvent.change(orgTranslationField, { target: { value: 'ay bruh cool' } });
         //console.log(inactiveField);
-        fireEvent.change(inactiveField, { target: { value: 'true' } });
+        fireEvent.change(inactiveField, { target: { value: 'false' } });
         //console.log(inactiveField.value);
         fireEvent.click(createButton);
 
@@ -95,7 +95,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
                 "orgCode": "123",
                 "orgTranslationShort": "abc",
                 "orgTranslation": "ay bruh cool",
-                "inactive": undefined //Axios params aren't being properly updated some reason
+                "inactive": "false" //Axios params aren't being properly updated some reason
             });
         
         expect(mockToast).toBeCalledWith("New organization Created - orgCode: 123");

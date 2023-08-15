@@ -77,13 +77,13 @@ describe("UCSBOrganizationEditPage tests", () => {
                 orgCode: "123",
                 orgTranslationShort: "abc",
                 orgTranslation: "ay bruh cool",
-                inactive: false
+                inactive: "false"
             });
             axiosMock.onPut('/api/ucsborganization').reply(200, {
                 orgCode: "123",
                 orgTranslationShort: "aaa",
                 orgTranslation: "andrew ate app",
-                inactive: true
+                inactive: "false"
             });
         });
 
@@ -118,7 +118,7 @@ describe("UCSBOrganizationEditPage tests", () => {
 
             fireEvent.change(orgTranslationShortField, { target: { value: 'aaa' } });
             fireEvent.change(orgTranslationField, { target: { value: 'andrew ate app' } });
-            fireEvent.change(inactiveField, { target: { value: true } });
+            fireEvent.change(inactiveField, { target: { value: "false" } }); //this
 
             fireEvent.click(submitButton);
             await waitFor(() => expect(mockToast).toBeCalled());
@@ -131,7 +131,7 @@ describe("UCSBOrganizationEditPage tests", () => {
             expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
                 orgTranslationShort: 'aaa',
                 orgTranslation: 'andrew ate app',
-                inactive: false
+                inactive: "false" //this
             })); // posted object
 
 
@@ -162,7 +162,7 @@ describe("UCSBOrganizationEditPage tests", () => {
 
             fireEvent.change(orgTranslationShortField, { target: { value: 'aaa' } });
             fireEvent.change(orgTranslationField, { target: { value: 'andrew ate app' } });
-            fireEvent.change(inactiveField, { target: { value: true } });
+            fireEvent.change(inactiveField, { target: { value: 'false' } });
 
             fireEvent.click(submitButton);
 
