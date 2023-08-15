@@ -10,6 +10,14 @@ export default function UCSBDiningCommonsMenuItemPage() {
 
   const currentUser = useCurrentUser();
 
+  const { data: ucsbDiningCommonsMenuItems, error: _error, status: _status } =
+    useBackend(
+      // Stryker disable next-line all : don't test internal caching of React Query
+      ["/api/ucsbdiningcommonsmenuitem/all"],
+      { method: "GET", url: "/api/ucsbdiningcommonsmenuitem/all" },
+      []
+    );
+
   const createButton = () => {
     if (hasRole(currentUser, "ROLE_ADMIN")) {
         return (
@@ -24,13 +32,6 @@ export default function UCSBDiningCommonsMenuItemPage() {
     } 
   }
   
-  const { data: ucsbDiningCommonsMenuItems, error: _error, status: _status } =
-    useBackend(
-      // Stryker disable next-line all : don't test internal caching of React Query
-      ["/api/ucsbdiningcommonsmenuitem/all"],
-      { method: "GET", url: "/api/ucsbdiningcommonsmenuitem/all" },
-      []
-    );
 
   return (
     <BasicLayout>

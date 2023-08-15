@@ -35,7 +35,7 @@ export default function UCSBDatesEditPage({storybook=false}) {
     }
   });
 
-  const onSuccess = (ucsbDate) => {
+  const onSuccess = (ucsbDiningCommonsMenuItem) => {
     toast(`UCSBDiningCommonsMenuItem Updated - id: ${ucsbDiningCommonsMenuItem.id} name: ${ucsbDiningCommonsMenuItem.name}`);
   }
 
