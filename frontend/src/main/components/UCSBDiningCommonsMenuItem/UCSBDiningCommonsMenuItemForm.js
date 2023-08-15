@@ -20,7 +20,7 @@ function UCSBDiningCommonsMenuItemForm({ initialContents, submitAction, buttonLa
     // Note that even this complex regex may still need some tweaks
 
     // Stryker disable next-line Regex
-    const idTest = "UCSBDiningComomonsMenuItem"
+    const idTest = "UCSBDiningCommonsMenuItemForm"
 
     // Stryker disable next-line all
     // const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
@@ -37,7 +37,7 @@ function UCSBDiningCommonsMenuItemForm({ initialContents, submitAction, buttonLa
                         <Form.Group className="mb-3" >
                             <Form.Label htmlFor="id">Id</Form.Label>
                             <Form.Control
-                                data-testid={idTest + "Form-id"}
+                                data-testid={idTest + "-id"}
                                 id="id"
                                 type="text"
                                 {...register("id")}

@@ -159,7 +159,7 @@ describe("UCSBDiningCommonsMenuItemEditPage tests", () => {
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("Menu Item Updated - id: 17 name: salad");
+            expect(mockToast).toBeCalledWith("UCSBDiningCommonsMenuItem Updated - id: 17 name: salad");
             expect(mockNavigate).toBeCalledWith({ "to": "/ucsbdiningcommonsmenuitem" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
