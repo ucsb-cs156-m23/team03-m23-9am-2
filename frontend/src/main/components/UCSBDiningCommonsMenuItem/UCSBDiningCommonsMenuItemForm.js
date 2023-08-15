@@ -72,7 +72,7 @@ function UCSBDiningCommonsMenuItemForm({ initialContents, submitAction, buttonLa
                             id="station"
                             type="text"
                             isInvalid={Boolean(errors.localDateTime)}
-                            {...register("station", { required: true, pattern: isodate_regex })}
+                            {...register("station", { required: true, pattern: idTest })}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.station && 'Station is required. '}
