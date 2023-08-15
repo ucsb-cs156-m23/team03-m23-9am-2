@@ -64,7 +64,7 @@ describe("RecommendationRequestCreatePage tests", () => {
             explanation: "south",
             dateRequested: "2023-08-12T14:44:35",
             dateNeeded: "2023-08-12T14:44:35",
-            done: "1"
+            done: "true"
         };
 
         axiosMock.onPost("/api/recommendationRequest/post").reply(202, recommendationRequest);
@@ -105,7 +105,7 @@ describe("RecommendationRequestCreatePage tests", () => {
         fireEvent.change(explanationInput, { target: { value: 'south' } })
         fireEvent.change(dateRequestedInput, { target: { value: '2023-08-12T14:44:35' } })
         fireEvent.change(dateNeededInput, { target: { value: '2023-08-12T14:44:35' } })
-        fireEvent.change(doneInput, { target: { value: '1' } })
+        fireEvent.change(doneInput, { target: { value: 'true' } })
         
         fireEvent.click(createButton);
 
@@ -119,12 +119,12 @@ describe("RecommendationRequestCreatePage tests", () => {
             explanation: "south",
             dateRequested: "2023-08-12T14:44:35",
             dateNeeded: "2023-08-12T14:44:35",
-            done: "1"
+            done: "true"
 
         });
 
         // assert - check that the toast was called with the expected message
-        expect(mockToast).toBeCalledWith("New recommendationRequest Created - id: 3 requesterEmail: south@ucsb.edu professorEmail: south@ucsb.edu explanation: south dateRequested: 2023-08-12T14:44:35 dateNeeded: 2023-08-12T14:44:35 done: 1");
+        expect(mockToast).toBeCalledWith("New recommendationRequest Created - id: 3 requesterEmail: south@ucsb.edu professorEmail: south@ucsb.edu explanation: south dateRequested: 2023-08-12T14:44:35 dateNeeded: 2023-08-12T14:44:35 done: true");
         
             
             

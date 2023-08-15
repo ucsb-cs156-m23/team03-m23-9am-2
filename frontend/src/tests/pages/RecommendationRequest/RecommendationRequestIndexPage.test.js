@@ -97,7 +97,7 @@ describe("RecommendationRequestIndexPage tests", () => {
         const dateNeeded = screen.getByText("2023-08-12T18:01:37");
         expect(dateNeeded).toBeInTheDocument();
 
-        const done = screen.getByText("1");
+        const done = screen.getByText("true");
         expect(done).toBeInTheDocument();
 
         // for non-admin users, details button is visible, but the edit and delete buttons should not be visible

@@ -82,7 +82,7 @@ describe("RecommendationRequestEditPage tests", () => {
                 explanation:"Burritos",
                 dateRequested:"2023-08-12T18:30:00",
                 dateNeeded:"2023-08-12T18:30:00",
-                done:"1"
+                done:"true"
             });
             axiosMock.onPut('/api/recommendationRequest').reply(200, {
                 id: "17",
@@ -94,7 +94,7 @@ describe("RecommendationRequestEditPage tests", () => {
                 explanation:"1Burritos",
                 dateRequested:"2023-08-12T18:30:01",
                 dateNeeded:"2023-08-12T18:30:01",
-                done:"1"
+                done:"true"
             });
         });
 
@@ -140,7 +140,7 @@ describe("RecommendationRequestEditPage tests", () => {
             expect(dateNeededField).toHaveValue("2023-08-12T18:30:00");
 
             expect(doneField).toBeInTheDocument();
-            expect(doneField).toHaveValue("1");
+            expect(doneField).toHaveValue("true");
 
             expect(submitButton).toHaveTextContent("Update");
 
@@ -149,12 +149,12 @@ describe("RecommendationRequestEditPage tests", () => {
             fireEvent.change(explanationField, { target: { value: '1Burritos' } });
             fireEvent.change(dateRequestedField, { target: { value: '2023-08-12T18:30:01' } });
             fireEvent.change(dateNeededField, { target: { value: '2023-08-12T18:30:01' } });
-            fireEvent.change(doneField, { target: { value: '1' } });
+            fireEvent.change(doneField, { target: { value: 'true' } });
 
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("RecommendationRequest Updated - id: 17 requesterEmail: 1Burritos@ucsb.edu professorEmail: 1Burritos@ucsb.edu explanation: 1Burritos dateRequested: 2023-08-12T18:30:01 dateNeeded: 2023-08-12T18:30:01 done: 1");
+            expect(mockToast).toBeCalledWith("RecommendationRequest Updated - id: 17 requesterEmail: 1Burritos@ucsb.edu professorEmail: 1Burritos@ucsb.edu explanation: 1Burritos dateRequested: 2023-08-12T18:30:01 dateNeeded: 2023-08-12T18:30:01 done: true");
             
             expect(mockNavigate).toBeCalledWith({ "to": "/recommendationRequest" });
 
@@ -168,7 +168,7 @@ describe("RecommendationRequestEditPage tests", () => {
                 explanation:"1Burritos",
                 dateRequested:"2023-08-12T18:30:01",
                 dateNeeded:"2023-08-12T18:30:01",
-                done:"1"
+                done:"true"
             })); // posted object
 
 
@@ -202,7 +202,7 @@ describe("RecommendationRequestEditPage tests", () => {
             expect(explanationField).toHaveValue("Burritos");
             expect(dateRequestedField).toHaveValue("2023-08-12T18:30:00");
             expect(dateNeededField).toHaveValue("2023-08-12T18:30:00");
-            expect(doneField).toHaveValue("1");
+            expect(doneField).toHaveValue("true");
 
 
             expect(submitButton).toBeInTheDocument();
@@ -212,12 +212,12 @@ describe("RecommendationRequestEditPage tests", () => {
             fireEvent.change(explanationField, { target: { value: '1Burritos' } })
             fireEvent.change(dateRequestedField, { target: { value: '2023-08-12T18:30:01' } })
             fireEvent.change(dateNeededField, { target: { value: '2023-08-12T18:30:01' } })
-            fireEvent.change(doneField, { target: { value: '1' } })
+            fireEvent.change(doneField, { target: { value: 'true' } })
 
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("RecommendationRequest Updated - id: 17 requesterEmail: 1Burritos@ucsb.edu professorEmail: 1Burritos@ucsb.edu explanation: 1Burritos dateRequested: 2023-08-12T18:30:01 dateNeeded: 2023-08-12T18:30:01 done: 1");
+            expect(mockToast).toBeCalledWith("RecommendationRequest Updated - id: 17 requesterEmail: 1Burritos@ucsb.edu professorEmail: 1Burritos@ucsb.edu explanation: 1Burritos dateRequested: 2023-08-12T18:30:01 dateNeeded: 2023-08-12T18:30:01 done: true");
             expect(mockNavigate).toBeCalledWith({ "to": "/recommendationRequest" });
         });
 
