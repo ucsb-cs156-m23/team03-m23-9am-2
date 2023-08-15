@@ -101,5 +101,3 @@ describe("RestaurantCreatePage tests", () => {
 
     });
 });
-
-
