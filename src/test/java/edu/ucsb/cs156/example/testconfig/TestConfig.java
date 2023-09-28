@@ -11,7 +11,7 @@ import edu.ucsb.cs156.example.services.GrantedAuthoritiesService;
 public class TestConfig {
 
     @Bean
-    public CurrentUserService currentUserService() {
+    public CurrentUserService mockCurrentUserService() {
         return new MockCurrentUserServiceImpl();
     }
 
